@@ -105,6 +105,8 @@ Pin change interrupt is used for touch button sensing.
 This allows the CPU to be put to sleep most of the time, reducing power consumption( ~0.75mA instead of 5.5mA !)
 Several blinking modes can be cycled through with the touch button: scroll (default, up and down animation), all (all on with sligth twinkle), and pixies (one LED at a time with low duty cycle).
 
+Depending on the animation mode used, runtime per charge can vary between 1.3 and 5.5 hours.
+
 ```Program: 922 bytes (11.3% Full) & Data: 36 bytes (7.0% Full)```
 
 
