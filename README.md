@@ -103,7 +103,7 @@ To upload using avrdude, run the following commands : `avrdude -u -c usbtiny -p 
 Software uses Timer1 to cycle between each LED and light it using a 3 bit intensity scale.
 Pin change interrupt is used for touch button sensing.
 This allows the CPU to be put to sleep most of the time, reducing power consumption( ~0.75mA instead of 5.5mA !)
-Several blinking modes can be cycled through with the touch button: scroll (default, up ), all, and pixies (one LED at a time)
+Several blinking modes can be cycled through with the touch button: scroll (default, up and down animation), all, and pixies (one LED at a time)
 
 ```Program: 922 bytes (11.3% Full) & Data: 36 bytes (7.0% Full)```
 
