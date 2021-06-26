@@ -180,7 +180,7 @@ ISR(TIM1_COMPA_vect) {  //Charlieplexing and animation interrupt
             }
             break;
             
-        case PIXIE: //light 1 led at a time, 1/10th duty cycle
+        case PIXIE: //light 1 led at a time, 1/10th duty cycle. Use raw level array so the order appears random
             switch(++brightness){
                 case 1:
                     level[index]=7;
