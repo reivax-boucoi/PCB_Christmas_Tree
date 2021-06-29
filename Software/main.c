@@ -180,7 +180,7 @@ ISR(TIM1_COMPA_vect) {  //Charlieplexing and animation interrupt
             }
             break;
             
-        case PIXIE:
+        case PIXIE: //light 
             switch(++brightness){
                 case 1:
                     level[index]=7;
