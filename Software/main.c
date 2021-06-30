@@ -80,7 +80,7 @@ int main(void){
     sei();           //Enable interrupts
     while(1){
         
-        set_sleep_mode(SLEEP_MODE_IDLE);
+        set_sleep_mode(SLEEP_MODE_IDLE);//put micro to sleep on interrupts are done
         sleep_mode();
 /*
         if(pstate&(1<<ADC_FLAG)){
