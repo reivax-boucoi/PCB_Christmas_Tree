@@ -77,7 +77,7 @@ int main(void){
     power_timer0_disable();
     power_usi_disable();
     
-    sei();                              //Enable interrupts
+    sei();           //Enable interrupts
     while(1){
         
         set_sleep_mode(SLEEP_MODE_IDLE);
