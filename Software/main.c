@@ -52,7 +52,7 @@ int main(void){
     GTCCR=0;                    //No PWM
     OCR1A=0;                    //No PWM
     OCR1C=250-1;                //16kHz for good POV (16k/64/12=20Hz)
-    TIMSK|=(1<<OCIE1A);                 //Compare Match A interrupt
+    TIMSK|=(1<<OCIE1A);         //Compare Match A interrupt
     
     /*
     //Second timer to handle animations/ADC sampling. Unused
