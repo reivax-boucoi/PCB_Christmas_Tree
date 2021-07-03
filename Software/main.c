@@ -50,8 +50,8 @@ int main(void){
     //Timer1 for LED charlieplexing
     TCCR1=(1<<CTC1)|(1<<CS11);  //Divide clock by 1, was 2<<CS10
     GTCCR=0;                    //No PWM
-    OCR1A=0;                          //No PWM
-    OCR1C=250-1;                      //16kHz for good POV (16k/64/12=20Hz)
+    OCR1A=0;                    //No PWM
+    OCR1C=250-1;                //16kHz for good POV (16k/64/12=20Hz)
     TIMSK|=(1<<OCIE1A);                 //Compare Match A interrupt
     
     /*
