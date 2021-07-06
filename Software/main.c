@@ -60,6 +60,7 @@ int main(void){
     TIMSK|=(1<<OCIE0A);
     */
     /*
+    //ADC for supply voltage brightness compensation, unused for now
     ADMUX=(1<<MUX3)|(1<<MUX2);
     ADCSRA |= (1<<ADEN) | (1<<ADIE);
     */
