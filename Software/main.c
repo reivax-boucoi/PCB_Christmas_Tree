@@ -64,7 +64,7 @@ int main(void){
     ADCSRA |= (1<<ADEN) | (1<<ADIE);
     */
     
-    //Enable pin change interrupt for touch button
+    //Enable pin change interrupt for touch button to wake CPU out of idle mode
     PCMSK|=(1<<PCINT4);
     GIMSK|=(1<<PCIE);
     
