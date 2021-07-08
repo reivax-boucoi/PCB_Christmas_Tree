@@ -63,6 +63,8 @@ int main(void){
     ADMUX=(1<<MUX3)|(1<<MUX2);
     ADCSRA |= (1<<ADEN) | (1<<ADIE);
     */
+    
+    //Enable pin change interrupt for touch button
     PCMSK|=(1<<PCINT4);
     GIMSK|=(1<<PCIE);
     
