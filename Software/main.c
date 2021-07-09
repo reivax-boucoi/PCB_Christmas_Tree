@@ -66,6 +66,7 @@ int main(void){
     PCMSK|=(1<<PCINT4);
     GIMSK|=(1<<PCIE);
     
+    //save power by disabling unused peripherals
     ADCSRA&=~(1<<ADEN);
     power_adc_disable();
     power_timer0_disable();
