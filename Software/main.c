@@ -24,7 +24,9 @@ const uint8_t order[12] = {0,11,9,4,2,10,7,6,3,1,8,5};//Reverse mounted leds ord
 
 volatile uint8_t blinkMode = SCROLL;    //Default animation at powerup
 volatile uint8_t pstate=0;
+
 /*
+//unused random functions
 static	long	randx;
 static	char	randf;
 
