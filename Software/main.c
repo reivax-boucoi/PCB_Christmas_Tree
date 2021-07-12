@@ -18,7 +18,7 @@
 volatile uint8_t cnt=1;
 volatile uint8_t level[12];
 
-//Select
+//Select order based on led soldering polarity
 const uint8_t order[12] = {0,11,9,4,2,10,7,6,3,1,8,5};//Reverse mounted leds ordering
 //const uint8_t order[12] = {3,8,2,7,9,4,5,1,0,6,11,10};//Right orientation for leds
 volatile uint8_t blinkMode = SCROLL;
