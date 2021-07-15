@@ -131,7 +131,7 @@ ISR(TIM1_COMPA_vect) {  //Charlieplexing and animation interrupt
     cnt++;
     if(cnt==speed){
         cnt=0;
-    switch(blinkMode){
+    switch(blinkMode){  //animate differently based on animation mode
         
         case SCROLL:
             if(pstate&(1<<DIR_FLAG)){
