@@ -127,6 +127,7 @@ ISR(TIM1_COMPA_vect) {  //Charlieplexing and animation interrupt
     DDRB = (DDRB & 0xF0) | outputs | colbit;
     PORTB = (PORTB & 0xF0) | outputs;
     
+    //Animation stuff
     cnt++;
     if(cnt==speed){
         cnt=0;
