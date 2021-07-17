@@ -109,6 +109,8 @@ ISR(PCINT0_vect){   //Touch button Pin Change Interrupt
 
 
 ISR(TIM1_COMPA_vect) {  //Charlieplexing and animation interrupt
+    
+    //Charlieplexing stuff on a 4bit scale (brightness ranges from 0 to 15
     static uint8_t first, ramp, column, bits, colbit;
     ramp = (ramp+1) & 0x07;
     if (ramp == 0) {
