@@ -108,7 +108,7 @@ ISR(PCINT0_vect){   //Touch button Pin Change Interrupt
 }
 
 
-ISR(TIM1_COMPA_vect) {
+ISR(TIM1_COMPA_vect) {  //Charlieplexing and animation interrupt
     static uint8_t first, ramp, column, bits, colbit;
     ramp = (ramp+1) & 0x07;
     if (ramp == 0) {
