@@ -90,6 +90,7 @@ ISR(ADC_vect){
 ISR(TIM0_COMPA_vect) {
     
 }*/
+
 ISR(PCINT0_vect){
     if((PINB&(1<<PINB4)) && (pstate&(1<<TOUCH_FLAG))){
         pstate&=~(1<<TOUCH_FLAG);   
