@@ -105,7 +105,7 @@ Software uses Timer1 to cycle between each LED and light it using a 4 bit intens
 ```Program: TODO bytes (TODO% Full) & Data: TODO bytes (TODO% Full)```
 
 
-|               |      | Average consumption (mA) |              | 5                | F total capacitance             |
+|               |      | Average consumption (mA)                | 5                | F total capacitance             |
 |---------------|------|--------------------------|--------------|------------------|---------------------------------|
 |               |      | All on mode              | Economy mode | E(J)             |                                 |
 | V full charge | 5    | 4.2                      | 0.9          | 62.5             | Energy when at max voltage      |
