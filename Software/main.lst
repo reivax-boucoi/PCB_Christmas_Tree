@@ -788,27 +788,27 @@
  617               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccTe0p2L.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccTe0p2L.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccTe0p2L.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccTe0p2L.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccTe0p2L.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccTe0p2L.s:13     .text.startup:0000000000000000 main
-     /tmp/ccTe0p2L.s:87     .text:0000000000000000 __vector_2
-     /tmp/ccTe0p2L.s:583    .bss:0000000000000000 pstate
-     /tmp/ccTe0p2L.s:589    .data:0000000000000003 blinkMode
-     /tmp/ccTe0p2L.s:577    .data:0000000000000002 brightness
-     /tmp/ccTe0p2L.s:567    .data:0000000000000000 index
+     /tmp/ccoBDs9I.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccoBDs9I.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccoBDs9I.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccoBDs9I.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccoBDs9I.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccoBDs9I.s:13     .text.startup:0000000000000000 main
+     /tmp/ccoBDs9I.s:87     .text:0000000000000000 __vector_2
+     /tmp/ccoBDs9I.s:583    .bss:0000000000000000 pstate
+     /tmp/ccoBDs9I.s:589    .data:0000000000000003 blinkMode
+     /tmp/ccoBDs9I.s:577    .data:0000000000000002 brightness
+     /tmp/ccoBDs9I.s:567    .data:0000000000000000 index
                             *COM*:000000000000000c level
-     /tmp/ccTe0p2L.s:202    .text:000000000000008e __vector_3
-     /tmp/ccTe0p2L.s:560    .bss:0000000000000005 ramp.1644
-     /tmp/ccTe0p2L.s:558    .bss:0000000000000004 bits.1646
-     /tmp/ccTe0p2L.s:556    .bss:0000000000000003 column.1645
-     /tmp/ccTe0p2L.s:554    .bss:0000000000000002 first.1643
+     /tmp/ccoBDs9I.s:202    .text:000000000000008e __vector_3
+     /tmp/ccoBDs9I.s:560    .bss:0000000000000005 ramp.1644
+     /tmp/ccoBDs9I.s:558    .bss:0000000000000004 bits.1646
+     /tmp/ccoBDs9I.s:556    .bss:0000000000000003 column.1645
+     /tmp/ccoBDs9I.s:554    .bss:0000000000000002 first.1643
                              .bss:0000000000000001 colbit.1647
-     /tmp/ccTe0p2L.s:613    .data:0000000000000004 cnt
-     /tmp/ccTe0p2L.s:572    .data:0000000000000001 speed
-     /tmp/ccTe0p2L.s:595    .rodata:0000000000000000 order
+     /tmp/ccoBDs9I.s:613    .data:0000000000000004 cnt
+     /tmp/ccoBDs9I.s:572    .data:0000000000000001 speed
+     /tmp/ccoBDs9I.s:595    .rodata:0000000000000000 order
 
 UNDEFINED SYMBOLS
 __mulqi3
