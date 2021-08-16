@@ -18,8 +18,8 @@
 volatile uint8_t cnt=1;
 volatile uint8_t level[12];
 //uint8_t level[12] = {1, 1, 3, 7, 15, 31, 63, 31, 15, 7, 3, 1 }; //Brightness levels of each led.
-//uint8_t order[12] = {0,11,9,4,2,10,7,6,3,1,8,5};//Reverse
-const uint8_t order[12] = {3,8,2,7,9,4,5,1,0,6,11,10};//Right
+const uint8_t order[12] = {0,11,9,4,2,10,7,6,3,1,8,5};//Reverse
+//const uint8_t order[12] = {3,8,2,7,9,4,5,1,0,6,11,10};//Right
 volatile uint8_t blinkMode = SCROLL;
 volatile uint8_t pstate=0;
 /*
