@@ -100,7 +100,7 @@ To upload using avrdude, run the following commands : `avrdude -u -c usbtiny -p 
 
 ---
 
-Software uses Timer1 to cycle between each LED and light it using a 7 bit intensity scale. Several blinking modes can be cycled through with the touch button: fade (default), pixies and debug (one LED at a time)
+Software uses Timer1 to cycle between each LED and light it using a 4 bit intensity scale. Several blinking modes can be cycled through with the touch button: fade (default), pixies and debug (one LED at a time)
 
 ```Program: TODO bytes (TODO% Full) & Data: TODO bytes (TODO% Full)```
 
