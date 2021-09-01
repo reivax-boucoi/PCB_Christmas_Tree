@@ -8,7 +8,7 @@
 #define PIXIE 1
 #define SCROLL 2
 #define DEBUG 3
-#define NB_MODES 4
+#define NB_MODES 3
 
 #define TOUCH_FLAG 0
 //#define ADC_FLAG 1
