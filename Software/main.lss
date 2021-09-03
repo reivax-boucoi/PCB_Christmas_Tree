@@ -498,8 +498,8 @@ ISR(TIM1_COMPA_vect) {
 int main(void){
       
     //Timer1 for LED charlieplexing
-    TCCR1=(1<<CTC1)|(1<<CS12);//|(1<<CS10);//|(1<<CS11);        //Divide clock by 1, was 2<<CS10
- 32c:	84 e8       	ldi	r24, 0x84	; 132
+    TCCR1=(1<<CTC1)|(1<<CS11)|(1<<CS10);//|(1<<CS11);        //Divide clock by 1, was 2<<CS10
+ 32c:	83 e8       	ldi	r24, 0x83	; 131
  32e:	80 bf       	out	0x30, r24	; 48
     GTCCR=0;                          //No PWM
  330:	1c bc       	out	0x2c, r1	; 44
