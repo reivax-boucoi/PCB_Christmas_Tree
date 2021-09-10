@@ -787,27 +787,27 @@
  616               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccjbN0Ip.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccjbN0Ip.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccjbN0Ip.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccjbN0Ip.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccjbN0Ip.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccjbN0Ip.s:13     .text.startup:0000000000000000 main
-     /tmp/ccjbN0Ip.s:87     .text:0000000000000000 __vector_2
-     /tmp/ccjbN0Ip.s:583    .bss:0000000000000000 pstate
-     /tmp/ccjbN0Ip.s:588    .bss:0000000000000001 blinkMode
-     /tmp/ccjbN0Ip.s:577    .data:0000000000000002 brightness
-     /tmp/ccjbN0Ip.s:567    .data:0000000000000000 index
+     /tmp/ccvHpORe.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccvHpORe.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccvHpORe.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccvHpORe.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccvHpORe.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccvHpORe.s:13     .text.startup:0000000000000000 main
+     /tmp/ccvHpORe.s:87     .text:0000000000000000 __vector_2
+     /tmp/ccvHpORe.s:583    .bss:0000000000000000 pstate
+     /tmp/ccvHpORe.s:588    .bss:0000000000000001 blinkMode
+     /tmp/ccvHpORe.s:577    .data:0000000000000002 brightness
+     /tmp/ccvHpORe.s:567    .data:0000000000000000 index
                             *COM*:000000000000000c level
-     /tmp/ccjbN0Ip.s:202    .text:000000000000008e __vector_3
-     /tmp/ccjbN0Ip.s:560    .bss:0000000000000006 ramp.1644
-     /tmp/ccjbN0Ip.s:558    .bss:0000000000000005 bits.1646
-     /tmp/ccjbN0Ip.s:556    .bss:0000000000000004 column.1645
-     /tmp/ccjbN0Ip.s:554    .bss:0000000000000003 first.1643
+     /tmp/ccvHpORe.s:202    .text:000000000000008e __vector_3
+     /tmp/ccvHpORe.s:560    .bss:0000000000000006 ramp.1644
+     /tmp/ccvHpORe.s:558    .bss:0000000000000005 bits.1646
+     /tmp/ccvHpORe.s:556    .bss:0000000000000004 column.1645
+     /tmp/ccvHpORe.s:554    .bss:0000000000000003 first.1643
                              .bss:0000000000000002 colbit.1647
-     /tmp/ccjbN0Ip.s:612    .data:0000000000000003 cnt
-     /tmp/ccjbN0Ip.s:572    .data:0000000000000001 speed
-     /tmp/ccjbN0Ip.s:594    .rodata:0000000000000000 order
+     /tmp/ccvHpORe.s:612    .data:0000000000000003 cnt
+     /tmp/ccvHpORe.s:572    .data:0000000000000001 speed
+     /tmp/ccvHpORe.s:594    .rodata:0000000000000000 order
 
 UNDEFINED SYMBOLS
 __mulqi3
