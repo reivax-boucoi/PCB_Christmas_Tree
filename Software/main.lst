@@ -51,7 +51,7 @@
   37:main.c        **** }
   38:main.c        **** */
   39:main.c        **** volatile uint8_t brightness=5;
-  40:main.c        **** volatile uint8_t speed=31;
+  40:main.c        **** volatile uint8_t speed=15;
   41:main.c        **** volatile uint8_t index=1;
   42:main.c        **** 
   43:main.c        **** 
@@ -751,7 +751,7 @@
  568 0000 01        		.byte	1
  569               	.global	speed
  572               	speed:
- 573 0001 1F        		.byte	31
+ 573 0001 0F        		.byte	15
  574               	.global	brightness
  577               	brightness:
  578 0002 05        		.byte	5
@@ -787,27 +787,27 @@
  616               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccvoNPy0.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccvoNPy0.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccvoNPy0.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccvoNPy0.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccvoNPy0.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccvoNPy0.s:13     .text.startup:0000000000000000 main
-     /tmp/ccvoNPy0.s:87     .text:0000000000000000 __vector_2
-     /tmp/ccvoNPy0.s:583    .bss:0000000000000000 pstate
-     /tmp/ccvoNPy0.s:588    .bss:0000000000000001 blinkMode
-     /tmp/ccvoNPy0.s:577    .data:0000000000000002 brightness
-     /tmp/ccvoNPy0.s:567    .data:0000000000000000 index
+     /tmp/cc96TrUS.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc96TrUS.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc96TrUS.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc96TrUS.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc96TrUS.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc96TrUS.s:13     .text.startup:0000000000000000 main
+     /tmp/cc96TrUS.s:87     .text:0000000000000000 __vector_2
+     /tmp/cc96TrUS.s:583    .bss:0000000000000000 pstate
+     /tmp/cc96TrUS.s:588    .bss:0000000000000001 blinkMode
+     /tmp/cc96TrUS.s:577    .data:0000000000000002 brightness
+     /tmp/cc96TrUS.s:567    .data:0000000000000000 index
                             *COM*:000000000000000c level
-     /tmp/ccvoNPy0.s:202    .text:000000000000008e __vector_3
-     /tmp/ccvoNPy0.s:560    .bss:0000000000000006 ramp.1644
-     /tmp/ccvoNPy0.s:558    .bss:0000000000000005 bits.1646
-     /tmp/ccvoNPy0.s:556    .bss:0000000000000004 column.1645
-     /tmp/ccvoNPy0.s:554    .bss:0000000000000003 first.1643
+     /tmp/cc96TrUS.s:202    .text:000000000000008e __vector_3
+     /tmp/cc96TrUS.s:560    .bss:0000000000000006 ramp.1644
+     /tmp/cc96TrUS.s:558    .bss:0000000000000005 bits.1646
+     /tmp/cc96TrUS.s:556    .bss:0000000000000004 column.1645
+     /tmp/cc96TrUS.s:554    .bss:0000000000000003 first.1643
                              .bss:0000000000000002 colbit.1647
-     /tmp/ccvoNPy0.s:612    .data:0000000000000003 cnt
-     /tmp/ccvoNPy0.s:572    .data:0000000000000001 speed
-     /tmp/ccvoNPy0.s:594    .rodata:0000000000000000 order
+     /tmp/cc96TrUS.s:612    .data:0000000000000003 cnt
+     /tmp/cc96TrUS.s:572    .data:0000000000000001 speed
+     /tmp/cc96TrUS.s:594    .rodata:0000000000000000 order
 
 UNDEFINED SYMBOLS
 __mulqi3
