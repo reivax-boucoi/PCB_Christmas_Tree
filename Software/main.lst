@@ -64,9 +64,9 @@
   21               	.L__stack_usage = 0
   45:main.c        ****       
   46:main.c        ****     //Timer1 for LED charlieplexing
-  47:main.c        ****     TCCR1=(1<<CTC1)|(1<<CS12)|(1<<CS10);//|(1<<CS11);        //Divide clock by 1, was 2<<CS10
+  47:main.c        ****     TCCR1=(1<<CTC1)|(1<<CS12)|(1<<CS11);//|(1<<CS11);        //Divide clock by 1, was 2<<CS10
   22               		.loc 1 47 0
-  23 0000 85E8      		ldi r24,lo8(-123)
+  23 0000 86E8      		ldi r24,lo8(-122)
   24 0002 80BF      		out 0x30,r24
   48:main.c        ****     GTCCR=0;                          //No PWM
   25               		.loc 1 48 0
@@ -787,27 +787,27 @@
  616               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/cchTlZoZ.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cchTlZoZ.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cchTlZoZ.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cchTlZoZ.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cchTlZoZ.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cchTlZoZ.s:13     .text.startup:0000000000000000 main
-     /tmp/cchTlZoZ.s:87     .text:0000000000000000 __vector_2
-     /tmp/cchTlZoZ.s:583    .bss:0000000000000000 pstate
-     /tmp/cchTlZoZ.s:588    .bss:0000000000000001 blinkMode
-     /tmp/cchTlZoZ.s:577    .data:0000000000000002 brightness
-     /tmp/cchTlZoZ.s:567    .data:0000000000000000 index
+     /tmp/ccvoNPy0.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccvoNPy0.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccvoNPy0.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccvoNPy0.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccvoNPy0.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccvoNPy0.s:13     .text.startup:0000000000000000 main
+     /tmp/ccvoNPy0.s:87     .text:0000000000000000 __vector_2
+     /tmp/ccvoNPy0.s:583    .bss:0000000000000000 pstate
+     /tmp/ccvoNPy0.s:588    .bss:0000000000000001 blinkMode
+     /tmp/ccvoNPy0.s:577    .data:0000000000000002 brightness
+     /tmp/ccvoNPy0.s:567    .data:0000000000000000 index
                             *COM*:000000000000000c level
-     /tmp/cchTlZoZ.s:202    .text:000000000000008e __vector_3
-     /tmp/cchTlZoZ.s:560    .bss:0000000000000006 ramp.1644
-     /tmp/cchTlZoZ.s:558    .bss:0000000000000005 bits.1646
-     /tmp/cchTlZoZ.s:556    .bss:0000000000000004 column.1645
-     /tmp/cchTlZoZ.s:554    .bss:0000000000000003 first.1643
+     /tmp/ccvoNPy0.s:202    .text:000000000000008e __vector_3
+     /tmp/ccvoNPy0.s:560    .bss:0000000000000006 ramp.1644
+     /tmp/ccvoNPy0.s:558    .bss:0000000000000005 bits.1646
+     /tmp/ccvoNPy0.s:556    .bss:0000000000000004 column.1645
+     /tmp/ccvoNPy0.s:554    .bss:0000000000000003 first.1643
                              .bss:0000000000000002 colbit.1647
-     /tmp/cchTlZoZ.s:612    .data:0000000000000003 cnt
-     /tmp/cchTlZoZ.s:572    .data:0000000000000001 speed
-     /tmp/cchTlZoZ.s:594    .rodata:0000000000000000 order
+     /tmp/ccvoNPy0.s:612    .data:0000000000000003 cnt
+     /tmp/ccvoNPy0.s:572    .data:0000000000000001 speed
+     /tmp/ccvoNPy0.s:594    .rodata:0000000000000000 order
 
 UNDEFINED SYMBOLS
 __mulqi3
