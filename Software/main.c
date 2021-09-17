@@ -37,7 +37,7 @@ int rand(void){
 }
 */
 volatile uint8_t brightness=5;
-volatile uint8_t speed=63;
+volatile uint8_t speed=31;
 volatile uint8_t index=1;
 
 
