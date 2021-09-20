@@ -61,7 +61,7 @@ int main(void){
     */
     PCMSK|=(1<<PCINT4);
     GIMSK|=(1<<PCIE);
-    ADCSRA &= ~ bit(ADEN);
+    ADCSRA&=~(1<<ADEN);
     power_adc_disable();
     power_timer0_disable();
     power_usi_disable();
