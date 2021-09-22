@@ -61,12 +61,14 @@ int main(void){
     */
     PCMSK|=(1<<PCINT4);
     GIMSK|=(1<<PCIE);
+    ADCSRA &= ~ bit(ADEN);
     power_adc_disable();
     power_timer0_disable();
     power_usi_disable();
     
     sei();                              //Enable interrupts
     while(1){
+        
         set_sleep_mode(SLEEP_MODE_IDLE);
         sleep_mode();
 /*
@@ -126,6 +128,7 @@ ISR(TIM1_COMPA_vect) {
     if(cnt==speed){
         cnt=0;
     switch(blinkMode){
+        
         case SCROLL:
             if(pstate&(1<<DIR_FLAG)){
                 level[order[index]]=brightness++;
