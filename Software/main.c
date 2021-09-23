@@ -177,6 +177,7 @@ ISR(TIM1_COMPA_vect) {
             }
 
         case DEBUG:
+            break;
         default:
             break;
         }
