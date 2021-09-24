@@ -150,7 +150,6 @@ ISR(TIM1_COMPA_vect) {
                     }
                 }
             }
-            
             break;
             
         case ALL:
