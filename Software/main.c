@@ -152,6 +152,7 @@ ISR(TIM1_COMPA_vect) {
             }
             
             break;
+            
         case ALL:
             level[order[index]]=brightness;
             brightness=(brightness+1)&0x07;
