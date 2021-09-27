@@ -109,10 +109,10 @@ ISR(TIM1_COMPA_vect) {
     static uint8_t first, ramp, column, bits, colbit;
     ramp = (ramp+1) & 0x07;
     if (ramp == 0) {
-    bits = 0x07;
-    column = (column + 1) & 0x03;
-    first = column * 3;
-    colbit = 1<<column;
+        bits = 0x07;
+        column = (column + 1) & 0x03;
+        first = column * 3;
+        colbit = 1<<column;
     }
     if (level[first] == ramp) bits = bits & 0x06;
     if (level[first+1] == ramp) bits = bits & 0x05;
