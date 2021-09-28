@@ -106,21 +106,21 @@ ISR(PCINT0_vect){
 
 
 ISR(TIM1_COMPA_vect) {
-  static uint8_t first, ramp, column, bits, colbit;
-  ramp = (ramp+1) & 0x07;
-  if (ramp == 0) {
+    static uint8_t first, ramp, column, bits, colbit;
+    ramp = (ramp+1) & 0x07;
+    if (ramp == 0) {
     bits = 0x07;
     column = (column + 1) & 0x03;
     first = column * 3;
     colbit = 1<<column;
-  }
-  if (level[first] == ramp) bits = bits & 0x06;
-  if (level[first+1] == ramp) bits = bits & 0x05;
-  if (level[first+2] == ramp) bits = bits & 0x03;
-  uint8_t mask = colbit - 1;
-  uint8_t outputs = (bits & mask) | (bits & ~mask)<<1;
-  DDRB = (DDRB & 0xF0) | outputs | colbit;
-  PORTB = (PORTB & 0xF0) | outputs;
+    }
+    if (level[first] == ramp) bits = bits & 0x06;
+    if (level[first+1] == ramp) bits = bits & 0x05;
+    if (level[first+2] == ramp) bits = bits & 0x03;
+    uint8_t mask = colbit - 1;
+    uint8_t outputs = (bits & mask) | (bits & ~mask)<<1;
+    DDRB = (DDRB & 0xF0) | outputs | colbit;
+    PORTB = (PORTB & 0xF0) | outputs;
     
     cnt++;
     if(cnt==speed){
