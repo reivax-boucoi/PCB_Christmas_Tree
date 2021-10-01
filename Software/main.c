@@ -69,7 +69,6 @@ int main(void){
     while(1){
         set_sleep_mode(SLEEP_MODE_IDLE);
         sleep_mode();
-
 /*
         if(pstate&(1<<ADC_FLAG)){
             pstate&=~(1<<ADC_FLAG);   
