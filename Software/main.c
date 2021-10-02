@@ -63,6 +63,7 @@ int main(void){
     GIMSK|=(1<<PCIE);
     power_adc_disable();
     power_timer0_disable();
+    power_usi_disable();
     
     sei();                              //Enable interrupts
     while(1){
