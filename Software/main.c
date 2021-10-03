@@ -1,6 +1,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include<avr/interrupt.h>
+#include <avr/sleep.h>
 #include <avr/power.h>
 
 #define ALL 0
@@ -60,6 +61,8 @@ int main(void){
     */
     PCMSK|=(1<<PCINT4);
     GIMSK|=(1<<PCIE);
+    power_adc_disable();
+    power_timer0_disable();
     
     sei();                              //Enable interrupts
     while(1){
