@@ -750,27 +750,27 @@
  585               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccfzUICh.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccfzUICh.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccfzUICh.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccfzUICh.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccfzUICh.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccfzUICh.s:13     .text.startup:0000000000000000 main
-     /tmp/ccfzUICh.s:56     .text:0000000000000000 __vector_2
-     /tmp/ccfzUICh.s:552    .bss:0000000000000000 pstate
-     /tmp/ccfzUICh.s:557    .bss:0000000000000001 blinkMode
-     /tmp/ccfzUICh.s:546    .data:0000000000000002 brightness
-     /tmp/ccfzUICh.s:536    .data:0000000000000000 index
+     /tmp/ccDnBOI7.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccDnBOI7.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccDnBOI7.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccDnBOI7.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccDnBOI7.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccDnBOI7.s:13     .text.startup:0000000000000000 main
+     /tmp/ccDnBOI7.s:56     .text:0000000000000000 __vector_2
+     /tmp/ccDnBOI7.s:552    .bss:0000000000000000 pstate
+     /tmp/ccDnBOI7.s:557    .bss:0000000000000001 blinkMode
+     /tmp/ccDnBOI7.s:546    .data:0000000000000002 brightness
+     /tmp/ccDnBOI7.s:536    .data:0000000000000000 index
                             *COM*:000000000000000c level
-     /tmp/ccfzUICh.s:171    .text:000000000000008e __vector_3
-     /tmp/ccfzUICh.s:529    .bss:0000000000000006 ramp.1644
-     /tmp/ccfzUICh.s:527    .bss:0000000000000005 bits.1646
-     /tmp/ccfzUICh.s:525    .bss:0000000000000004 column.1645
-     /tmp/ccfzUICh.s:523    .bss:0000000000000003 first.1643
+     /tmp/ccDnBOI7.s:171    .text:000000000000008e __vector_3
+     /tmp/ccDnBOI7.s:529    .bss:0000000000000006 ramp.1644
+     /tmp/ccDnBOI7.s:527    .bss:0000000000000005 bits.1646
+     /tmp/ccDnBOI7.s:525    .bss:0000000000000004 column.1645
+     /tmp/ccDnBOI7.s:523    .bss:0000000000000003 first.1643
                              .bss:0000000000000002 colbit.1647
-     /tmp/ccfzUICh.s:581    .data:0000000000000003 cnt
-     /tmp/ccfzUICh.s:541    .data:0000000000000001 speed
-     /tmp/ccfzUICh.s:563    .rodata:0000000000000000 order
+     /tmp/ccDnBOI7.s:581    .data:0000000000000003 cnt
+     /tmp/ccDnBOI7.s:541    .data:0000000000000001 speed
+     /tmp/ccDnBOI7.s:563    .rodata:0000000000000000 order
 
 UNDEFINED SYMBOLS
 __mulqi3
