@@ -87,8 +87,21 @@ ISR(ADC_vect){
 ISR(TIM0_COMPA_vect) {
     
 }*/
+
 ISR(PCINT0_vect){
-    
+    if((PINB&(1<<PINB4)) && (pstate&(1<<TOUCH_FLAG))){
+    pstate&=~(1<<TOUCH_FLAG);   
+    blinkMode++;
+    if(blinkMode>=NB_MODES)blinkMode=0;
+    brightness=0;
+    pstate|=(1<<DIR_FLAG);
+    index=0;
+    for(uint8_t i=0;i<12;i++){
+        level[i]=0;
+    }
+}else if(!(PINB&(1<<PINB4)) && !(pstate&(1<<TOUCH_FLAG))){
+    pstate|=(1<<TOUCH_FLAG);            
+}
 }
 
 
@@ -162,19 +175,5 @@ ISR(TIM1_COMPA_vect) {
         default:
             break;
         }
-    }
-    
-    if((PINB&(1<<PINB4)) && (pstate&(1<<TOUCH_FLAG))){
-        pstate&=~(1<<TOUCH_FLAG);   
-        blinkMode++;
-        if(blinkMode>=NB_MODES)blinkMode=0;
-        brightness=0;
-        pstate|=(1<<DIR_FLAG);
-        index=0;
-        for(uint8_t i=0;i<12;i++){
-            level[i]=0;
-        }
-    }else if(!(PINB&(1<<PINB4)) && !(pstate&(1<<TOUCH_FLAG))){
-        pstate|=(1<<TOUCH_FLAG);            
     }
 }
