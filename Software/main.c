@@ -58,6 +58,7 @@ int main(void){
     ADMUX=(1<<MUX3)|(1<<MUX2);
     ADCSRA |= (1<<ADEN) | (1<<ADIE);
     */
+    PCMSK|=(1<<PCINT4);
     GIMSK|=(1<<PCIE);
     
     sei();                              //Enable interrupts
@@ -86,6 +87,9 @@ ISR(ADC_vect){
 ISR(TIM0_COMPA_vect) {
     
 }*/
+ISR(PCINT0_vect){
+    
+}
 
 
 ISR(TIM1_COMPA_vect) {
