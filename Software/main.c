@@ -58,7 +58,7 @@ int main(void){
     ADMUX=(1<<MUX3)|(1<<MUX2);
     ADCSRA |= (1<<ADEN) | (1<<ADIE);
     */
-    //GIMSK|=(1<<PCIE);
+    GIMSK|=(1<<PCIE);
     
     sei();                              //Enable interrupts
     while(1){
@@ -149,10 +149,10 @@ ISR(TIM1_COMPA_vect) {
             if(brightness>10){
                 brightness=0;
                 level[index]=7;
+            }else if(brightness==0{
+                level[index]=0;
                 index++;
                 if(index>11)index=0;
-            }else{
-                level[index]=0;
             }
         case DEBUG:
         default:
