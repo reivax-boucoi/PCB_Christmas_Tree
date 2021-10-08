@@ -7,10 +7,11 @@
    7               		.text
    8               	.Ltext0:
    9               		.cfi_sections	.debug_frame
-  10               	.global	srand
-  12               	srand:
-  13               	.LFB9:
-  14               		.file 1 "main.c"
+  10               		.section	.text.startup,"ax",@progbits
+  11               	.global	main
+  13               	main:
+  14               	.LFB9:
+  15               		.file 1 "main.c"
    1:main.c        **** #include <avr/io.h>
    2:main.c        **** #include <util/delay.h>
    3:main.c        **** #include<avr/interrupt.h>
@@ -28,128 +29,59 @@
   15:main.c        **** #define DIR_FLAG 2
   16:main.c        **** 
   17:main.c        **** volatile uint8_t cnt=1;
-  18:main.c        **** uint8_t level[12];
+  18:main.c        **** volatile uint8_t level[12];
   19:main.c        **** //uint8_t level[12] = {1, 1, 3, 7, 15, 31, 63, 31, 15, 7, 3, 1 }; //Brightness levels of each led.
   20:main.c        **** //uint8_t order[12] = {0,11,9,4,2,10,7,6,3,1,8,5};//Reverse
   21:main.c        **** const uint8_t order[12] = {3,8,2,7,9,4,5,1,0,6,11,10};//Right
   22:main.c        **** volatile uint8_t blinkMode = ALL;
   23:main.c        **** volatile uint8_t pstate=0;
-  24:main.c        **** 
+  24:main.c        **** /*
   25:main.c        **** static	long	randx;
   26:main.c        **** static	char	randf;
   27:main.c        **** 
   28:main.c        **** void srand(unsigned x){
-  15               		.loc 1 28 0
-  16               		.cfi_startproc
-  17               	.LVL0:
-  18               	/* prologue: function */
-  19               	/* frame size = 0 */
-  20               	/* stack size = 0 */
-  21               	.L__stack_usage = 0
   29:main.c        **** 	randx = x;
-  22               		.loc 1 29 0
-  23 0000 A0E0      		ldi r26,0
-  24 0002 B0E0      		ldi r27,0
-  25 0004 8093 0000 		sts randx,r24
-  26 0008 9093 0000 		sts randx+1,r25
-  27 000c A093 0000 		sts randx+2,r26
-  28 0010 B093 0000 		sts randx+3,r27
   30:main.c        **** 	randf = 1;
-  29               		.loc 1 30 0
-  30 0014 81E0      		ldi r24,lo8(1)
-  31               	.LVL1:
-  32 0016 8093 0000 		sts randf,r24
-  33 001a 0895      		ret
-  34               		.cfi_endproc
-  35               	.LFE9:
-  37               	.global	__mulsi3
-  38               	.global	rand
-  40               	rand:
-  41               	.LFB10:
   31:main.c        **** }
   32:main.c        **** 
   33:main.c        **** int rand(void){
-  42               		.loc 1 33 0
-  43               		.cfi_startproc
-  44               	/* prologue: function */
-  45               	/* frame size = 0 */
-  46               	/* stack size = 0 */
-  47               	.L__stack_usage = 0
   34:main.c        **** 	if(!randf)srand(1);
-  48               		.loc 1 34 0
-  49 001c 8091 0000 		lds r24,randf
-  50 0020 8111      		cpse r24,__zero_reg__
-  51 0022 00C0      		rjmp .L3
-  52               		.loc 1 34 0 is_stmt 0 discriminator 1
-  53 0024 81E0      		ldi r24,lo8(1)
-  54 0026 90E0      		ldi r25,0
-  55 0028 00D0      		rcall srand
-  56               	.LVL2:
-  57               	.L3:
   35:main.c        **** 	return((int)((randx = randx*1103515245L + 12345)>>16) & 077777);
-  58               		.loc 1 35 0 is_stmt 1
-  59 002a 2DE6      		ldi r18,lo8(109)
-  60 002c 3EE4      		ldi r19,lo8(78)
-  61 002e 46EC      		ldi r20,lo8(-58)
-  62 0030 51E4      		ldi r21,lo8(65)
-  63 0032 6091 0000 		lds r22,randx
-  64 0036 7091 0000 		lds r23,randx+1
-  65 003a 8091 0000 		lds r24,randx+2
-  66 003e 9091 0000 		lds r25,randx+3
-  67 0042 00D0      		rcall __mulsi3
-  68               	.LVL3:
-  69 0044 675C      		subi r22,-57
-  70 0046 7F4C      		sbci r23,-49
-  71 0048 8F4F      		sbci r24,-1
-  72 004a 9F4F      		sbci r25,-1
-  73 004c 6093 0000 		sts randx,r22
-  74 0050 7093 0000 		sts randx+1,r23
-  75 0054 8093 0000 		sts randx+2,r24
-  76 0058 9093 0000 		sts randx+3,r25
   36:main.c        **** }
-  77               		.loc 1 36 0
-  78 005c 9F77      		andi r25,127
-  79 005e 0895      		ret
-  80               		.cfi_endproc
-  81               	.LFE10:
-  83               		.section	.text.startup,"ax",@progbits
-  84               	.global	main
-  86               	main:
-  87               	.LFB11:
-  37:main.c        **** 
+  37:main.c        **** */
   38:main.c        **** volatile uint8_t brightness=5;
   39:main.c        **** volatile uint8_t speed=63;
   40:main.c        **** volatile uint8_t index=1;
   41:main.c        **** 
   42:main.c        **** 
   43:main.c        **** int main(void){
-  88               		.loc 1 43 0
-  89               		.cfi_startproc
-  90               	/* prologue: function */
-  91               	/* frame size = 0 */
-  92               	/* stack size = 0 */
-  93               	.L__stack_usage = 0
+  16               		.loc 1 43 0
+  17               		.cfi_startproc
+  18               	/* prologue: function */
+  19               	/* frame size = 0 */
+  20               	/* stack size = 0 */
+  21               	.L__stack_usage = 0
   44:main.c        ****       
   45:main.c        ****     //Timer1 for LED charlieplexing
   46:main.c        ****     TCCR1=(1<<CTC1)|(1<<CS12);//|(1<<CS10)|(1<<CS11);        //Divide clock by 1, was 2<<CS10
-  94               		.loc 1 46 0
-  95 0000 84E8      		ldi r24,lo8(-124)
-  96 0002 80BF      		out 0x30,r24
+  22               		.loc 1 46 0
+  23 0000 84E8      		ldi r24,lo8(-124)
+  24 0002 80BF      		out 0x30,r24
   47:main.c        ****     GTCCR=0;                          //No PWM
-  97               		.loc 1 47 0
-  98 0004 1CBC      		out 0x2c,__zero_reg__
+  25               		.loc 1 47 0
+  26 0004 1CBC      		out 0x2c,__zero_reg__
   48:main.c        ****     OCR1A=0;                          //No PWM
-  99               		.loc 1 48 0
- 100 0006 1EBC      		out 0x2e,__zero_reg__
+  27               		.loc 1 48 0
+  28 0006 1EBC      		out 0x2e,__zero_reg__
   49:main.c        ****     OCR1C=250-1;                      //16kHz for good POV (16k/64/12=20Hz)
- 101               		.loc 1 49 0
- 102 0008 89EF      		ldi r24,lo8(-7)
- 103 000a 8DBD      		out 0x2d,r24
+  29               		.loc 1 49 0
+  30 0008 89EF      		ldi r24,lo8(-7)
+  31 000a 8DBD      		out 0x2d,r24
   50:main.c        ****     TIMSK|=(1<<OCIE1A);                 //Compare Match A interrupt
- 104               		.loc 1 50 0
- 105 000c 89B7      		in r24,0x39
- 106 000e 8064      		ori r24,lo8(64)
- 107 0010 89BF      		out 0x39,r24
+  32               		.loc 1 50 0
+  33 000c 89B7      		in r24,0x39
+  34 000e 8064      		ori r24,lo8(64)
+  35 0010 89BF      		out 0x39,r24
   51:main.c        ****     /*
   52:main.c        ****     TCCR0A=(1<<WGM01);
   53:main.c        ****     OCR0A=255;
@@ -162,606 +94,576 @@
   60:main.c        ****     */
   61:main.c        ****     
   62:main.c        ****     sei();                              //Enable interrupts
- 108               		.loc 1 62 0
- 109               	/* #APP */
- 110               	 ;  62 "main.c" 1
- 111 0012 7894      		sei
- 112               	 ;  0 "" 2
- 113               	/* #NOAPP */
- 114               	.L11:
+  36               		.loc 1 62 0
+  37               	/* #APP */
+  38               	 ;  62 "main.c" 1
+  39 0012 7894      		sei
+  40               	 ;  0 "" 2
+  41               	/* #NOAPP */
+  42               	.L2:
+  43 0014 00C0      		rjmp .L2
+  44               		.cfi_endproc
+  45               	.LFE9:
+  47               		.text
+  48               	.global	__vector_3
+  50               	__vector_3:
+  51               	.LFB10:
   63:main.c        ****     while(1){
   64:main.c        ****         
-  65:main.c        ****         if((PINB&(1<<PINB4)) && (pstate&(1<<TOUCH_FLAG))){
- 115               		.loc 1 65 0
- 116 0014 B49B      		sbis 0x16,4
- 117 0016 00C0      		rjmp .L6
- 118               		.loc 1 65 0 is_stmt 0 discriminator 1
- 119 0018 8091 0000 		lds r24,pstate
- 120 001c 80FF      		sbrs r24,0
- 121 001e 00C0      		rjmp .L6
-  66:main.c        ****             pstate&=~(1<<TOUCH_FLAG);   
- 122               		.loc 1 66 0 is_stmt 1
- 123 0020 8091 0000 		lds r24,pstate
- 124 0024 8E7F      		andi r24,lo8(-2)
- 125 0026 8093 0000 		sts pstate,r24
-  67:main.c        ****             blinkMode++;
- 126               		.loc 1 67 0
- 127 002a 8091 0000 		lds r24,blinkMode
- 128 002e 8F5F      		subi r24,lo8(-(1))
- 129 0030 8093 0000 		sts blinkMode,r24
-  68:main.c        ****             if(blinkMode>=NB_MODES)blinkMode=0;
- 130               		.loc 1 68 0
- 131 0034 8091 0000 		lds r24,blinkMode
- 132 0038 8430      		cpi r24,lo8(4)
- 133 003a 00F0      		brlo .L7
- 134               		.loc 1 68 0 is_stmt 0 discriminator 1
- 135 003c 1092 0000 		sts blinkMode,__zero_reg__
- 136               	.L7:
-  69:main.c        ****             brightness=0;
- 137               		.loc 1 69 0 is_stmt 1
- 138 0040 1092 0000 		sts brightness,__zero_reg__
-  70:main.c        ****             pstate|=(1<<DIR_FLAG);
- 139               		.loc 1 70 0
- 140 0044 8091 0000 		lds r24,pstate
- 141 0048 8460      		ori r24,lo8(4)
- 142 004a 8093 0000 		sts pstate,r24
-  71:main.c        ****             index=0;
- 143               		.loc 1 71 0
- 144 004e 1092 0000 		sts index,__zero_reg__
- 145               	.LVL4:
- 146 0052 E0E0      		ldi r30,lo8(level)
- 147 0054 F0E0      		ldi r31,hi8(level)
- 148               	.LVL5:
- 149               	.L8:
- 150               	.LBB2:
-  72:main.c        ****             for(uint8_t i=0;i<12;i++){
-  73:main.c        ****                 level[i]=0;
- 151               		.loc 1 73 0 discriminator 3
- 152 0056 1192      		st Z+,__zero_reg__
- 153               	.LVL6:
-  72:main.c        ****             for(uint8_t i=0;i<12;i++){
- 154               		.loc 1 72 0 discriminator 3
- 155 0058 80E0      		ldi r24,hi8(level+12)
- 156 005a E030      		cpi r30,lo8(level+12)
- 157 005c F807      		cpc r31,r24
- 158 005e 01F4      		brne .L8
- 159 0060 00C0      		rjmp .L9
- 160               	.LVL7:
- 161               	.L6:
- 162               	.LBE2:
-  74:main.c        ****             }
-  75:main.c        ****                        
-  76:main.c        ****         }else if(!(PINB&(1<<PINB4)) && !(pstate&(1<<TOUCH_FLAG))){
- 163               		.loc 1 76 0
- 164 0062 B499      		sbic 0x16,4
- 165 0064 00C0      		rjmp .L9
- 166               		.loc 1 76 0 is_stmt 0 discriminator 1
- 167 0066 8091 0000 		lds r24,pstate
- 168 006a 80FD      		sbrc r24,0
- 169 006c 00C0      		rjmp .L9
-  77:main.c        ****             pstate|=(1<<TOUCH_FLAG);            
- 170               		.loc 1 77 0 is_stmt 1
- 171 006e 8091 0000 		lds r24,pstate
- 172 0072 8160      		ori r24,lo8(1)
- 173 0074 8093 0000 		sts pstate,r24
- 174               	.L9:
-  78:main.c        ****         }
-  79:main.c        ****         if(pstate&(1<<DEBUG_FLAG)){
- 175               		.loc 1 79 0
- 176 0078 8091 0000 		lds r24,pstate
-  80:main.c        ****             //pstate&=~(1<<DEBUG_FLAG);  
-  81:main.c        ****         }  
-  82:main.c        **** /*
-  83:main.c        ****         if(pstate&(1<<ADC_FLAG)){
-  84:main.c        ****             pstate&=~(1<<ADC_FLAG);   
-  85:main.c        ****             ADCSRA |= (1<<ADSC);
-  86:main.c        ****         }*/
-  87:main.c        **** 
-  88:main.c        ****     }
- 177               		.loc 1 88 0
- 178 007c 00C0      		rjmp .L11
- 179               		.cfi_endproc
- 180               	.LFE11:
- 182               		.text
- 183               	.global	__vector_10
- 185               	__vector_10:
- 186               	.LFB12:
-  89:main.c        ****     return 0;
-  90:main.c        **** }     
-  91:main.c        **** /*
-  92:main.c        **** ISR(ADC_vect){
-  93:main.c        ****     uint16_t res=ADCL;
-  94:main.c        ****     res|=(ADCH<<8);
-  95:main.c        ****     blinkMode=2753/res-3;   //Vcc=1024*1.1/ADC
-  96:main.c        **** }*/
-  97:main.c        **** 
-  98:main.c        **** ISR(TIM0_COMPA_vect) {
- 187               		.loc 1 98 0
- 188               		.cfi_startproc
- 189 0060 1F92      		push r1
- 190               	.LCFI0:
- 191               		.cfi_def_cfa_offset 3
- 192               		.cfi_offset 1, -2
- 193 0062 0F92      		push r0
- 194               	.LCFI1:
- 195               		.cfi_def_cfa_offset 4
- 196               		.cfi_offset 0, -3
- 197 0064 0FB6      		in r0,__SREG__
- 198 0066 0F92      		push r0
- 199 0068 1124      		clr __zero_reg__
- 200               	/* prologue: Signal */
- 201               	/* frame size = 0 */
- 202               	/* stack size = 3 */
- 203               	.L__stack_usage = 3
- 204               	/* epilogue start */
-  99:main.c        ****     
- 100:main.c        **** }
- 205               		.loc 1 100 0
- 206 006a 0F90      		pop r0
- 207 006c 0FBE      		out __SREG__,r0
- 208 006e 0F90      		pop r0
- 209 0070 1F90      		pop r1
- 210 0072 1895      		reti
- 211               		.cfi_endproc
- 212               	.LFE12:
- 214               	.global	__vector_3
- 216               	__vector_3:
- 217               	.LFB13:
- 101:main.c        **** 
- 102:main.c        **** 
- 103:main.c        **** ISR(TIM1_COMPA_vect) {
- 218               		.loc 1 103 0
- 219               		.cfi_startproc
- 220 0074 1F92      		push r1
- 221               	.LCFI2:
- 222               		.cfi_def_cfa_offset 3
- 223               		.cfi_offset 1, -2
- 224 0076 0F92      		push r0
- 225               	.LCFI3:
- 226               		.cfi_def_cfa_offset 4
- 227               		.cfi_offset 0, -3
- 228 0078 0FB6      		in r0,__SREG__
- 229 007a 0F92      		push r0
- 230 007c 1124      		clr __zero_reg__
- 231 007e 2F93      		push r18
- 232               	.LCFI4:
- 233               		.cfi_def_cfa_offset 5
- 234               		.cfi_offset 18, -4
- 235 0080 3F93      		push r19
- 236               	.LCFI5:
- 237               		.cfi_def_cfa_offset 6
- 238               		.cfi_offset 19, -5
- 239 0082 4F93      		push r20
- 240               	.LCFI6:
- 241               		.cfi_def_cfa_offset 7
- 242               		.cfi_offset 20, -6
- 243 0084 5F93      		push r21
- 244               	.LCFI7:
- 245               		.cfi_def_cfa_offset 8
- 246               		.cfi_offset 21, -7
- 247 0086 6F93      		push r22
- 248               	.LCFI8:
- 249               		.cfi_def_cfa_offset 9
- 250               		.cfi_offset 22, -8
- 251 0088 7F93      		push r23
- 252               	.LCFI9:
- 253               		.cfi_def_cfa_offset 10
- 254               		.cfi_offset 23, -9
- 255 008a 8F93      		push r24
- 256               	.LCFI10:
- 257               		.cfi_def_cfa_offset 11
- 258               		.cfi_offset 24, -10
- 259 008c 9F93      		push r25
- 260               	.LCFI11:
- 261               		.cfi_def_cfa_offset 12
- 262               		.cfi_offset 25, -11
- 263 008e EF93      		push r30
- 264               	.LCFI12:
- 265               		.cfi_def_cfa_offset 13
- 266               		.cfi_offset 30, -12
- 267 0090 FF93      		push r31
- 268               	.LCFI13:
- 269               		.cfi_def_cfa_offset 14
- 270               		.cfi_offset 31, -13
- 271               	/* prologue: Signal */
- 272               	/* frame size = 0 */
- 273               	/* stack size = 13 */
- 274               	.L__stack_usage = 13
- 104:main.c        ****   static uint8_t first, ramp, column, bits, colbit;
- 105:main.c        ****   ramp = (ramp+1) & 0x07;
- 275               		.loc 1 105 0
- 276 0092 9091 0000 		lds r25,ramp.1652
- 277 0096 9F5F      		subi r25,lo8(-(1))
- 278 0098 9770      		andi r25,lo8(7)
- 279 009a 9093 0000 		sts ramp.1652,r25
- 106:main.c        ****   if (ramp == 0) {
- 280               		.loc 1 106 0
- 281 009e 9111      		cpse r25,__zero_reg__
- 282 00a0 00C0      		rjmp .L21
- 107:main.c        ****     bits = 0x07;
- 283               		.loc 1 107 0
- 284 00a2 87E0      		ldi r24,lo8(7)
- 285 00a4 8093 0000 		sts bits.1654,r24
- 108:main.c        ****     column = (column + 1) & 0x03;
- 286               		.loc 1 108 0
- 287 00a8 2091 0000 		lds r18,column.1653
- 288 00ac 2F5F      		subi r18,lo8(-(1))
- 289 00ae 2370      		andi r18,lo8(3)
- 290 00b0 2093 0000 		sts column.1653,r18
- 109:main.c        ****     first = column * 3;
- 291               		.loc 1 109 0
- 292 00b4 822F      		mov r24,r18
- 293 00b6 63E0      		ldi r22,lo8(3)
- 294 00b8 00D0      		rcall __mulqi3
- 295 00ba 8093 0000 		sts first.1651,r24
- 110:main.c        ****     colbit = 1<<column;
- 296               		.loc 1 110 0
- 297 00be 41E0      		ldi r20,lo8(1)
- 298 00c0 50E0      		ldi r21,0
- 299 00c2 BA01      		movw r22,r20
- 300 00c4 00C0      		rjmp 2f
- 301               		1:
- 302 00c6 660F      		lsl r22
- 303 00c8 771F      		rol r23
- 304               		2:
- 305 00ca 2A95      		dec r18
- 306 00cc 02F4      		brpl 1b
- 307 00ce 6093 0000 		sts colbit.1655,r22
- 308               	.L21:
- 111:main.c        ****   }
- 112:main.c        ****   if (level[first] == ramp) bits = bits & 0x06;
- 309               		.loc 1 112 0
- 310 00d2 E091 0000 		lds r30,first.1651
- 311 00d6 F0E0      		ldi r31,0
- 312 00d8 E050      		subi r30,lo8(-(level))
- 313 00da F040      		sbci r31,hi8(-(level))
- 314 00dc 8081      		ld r24,Z
- 315 00de 9813      		cpse r25,r24
- 316 00e0 00C0      		rjmp .L22
- 317               		.loc 1 112 0 is_stmt 0 discriminator 1
- 318 00e2 8091 0000 		lds r24,bits.1654
- 319 00e6 8670      		andi r24,lo8(6)
- 320 00e8 8093 0000 		sts bits.1654,r24
- 321               	.L22:
- 113:main.c        ****   if (level[first+1] == ramp) bits = bits & 0x05;
- 322               		.loc 1 113 0 is_stmt 1
- 323 00ec 8181      		ldd r24,Z+1
- 324 00ee 9813      		cpse r25,r24
- 325 00f0 00C0      		rjmp .L23
- 326               		.loc 1 113 0 is_stmt 0 discriminator 1
- 327 00f2 8091 0000 		lds r24,bits.1654
- 328 00f6 8570      		andi r24,lo8(5)
- 329 00f8 8093 0000 		sts bits.1654,r24
- 330               	.L23:
- 114:main.c        ****   if (level[first+2] == ramp) bits = bits & 0x03;
- 331               		.loc 1 114 0 is_stmt 1
- 332 00fc 8281      		ldd r24,Z+2
- 333 00fe 9813      		cpse r25,r24
- 334 0100 00C0      		rjmp .L24
- 335               		.loc 1 114 0 is_stmt 0 discriminator 1
- 336 0102 8091 0000 		lds r24,bits.1654
- 337 0106 8370      		andi r24,lo8(3)
- 338 0108 8093 0000 		sts bits.1654,r24
- 339               	.L24:
- 115:main.c        ****   uint8_t mask = colbit - 1;
- 340               		.loc 1 115 0 is_stmt 1
- 341 010c 4091 0000 		lds r20,colbit.1655
- 342 0110 6FEF      		ldi r22,lo8(-1)
- 343 0112 640F      		add r22,r20
- 344               	.LVL8:
- 116:main.c        ****   uint8_t outputs = (bits & mask) | (bits & ~mask)<<1;
- 345               		.loc 1 116 0
- 346 0114 5091 0000 		lds r21,bits.1654
- 347 0118 862F      		mov r24,r22
- 348 011a 90E0      		ldi r25,0
- 349 011c 8095      		com r24
- 350 011e 9095      		com r25
- 351 0120 252F      		mov r18,r21
- 352 0122 30E0      		ldi r19,0
- 353 0124 8223      		and r24,r18
- 354 0126 9323      		and r25,r19
- 355 0128 880F      		lsl r24
- 356 012a 991F      		rol r25
- 357 012c 5623      		and r21,r22
- 358 012e 852B      		or r24,r21
- 359               	.LVL9:
- 117:main.c        ****   DDRB = (DDRB & 0xF0) | outputs | colbit;
- 360               		.loc 1 117 0
- 361 0130 97B3      		in r25,0x17
- 362 0132 907F      		andi r25,lo8(-16)
- 363 0134 492B      		or r20,r25
- 364 0136 482B      		or r20,r24
- 365 0138 47BB      		out 0x17,r20
- 118:main.c        ****   PORTB = (PORTB & 0xF0) | outputs;
- 366               		.loc 1 118 0
- 367 013a 98B3      		in r25,0x18
- 368 013c 907F      		andi r25,lo8(-16)
- 369 013e 892B      		or r24,r25
- 370               	.LVL10:
- 371 0140 88BB      		out 0x18,r24
- 119:main.c        ****     
- 120:main.c        ****     cnt++;
- 372               		.loc 1 120 0
- 373 0142 8091 0000 		lds r24,cnt
- 374 0146 8F5F      		subi r24,lo8(-(1))
- 375 0148 8093 0000 		sts cnt,r24
- 121:main.c        ****     if(cnt==speed){
- 376               		.loc 1 121 0
- 377 014c 9091 0000 		lds r25,cnt
- 378 0150 8091 0000 		lds r24,speed
- 379 0154 9813      		cpse r25,r24
- 380 0156 00C0      		rjmp .L20
- 122:main.c        ****         cnt=0;
- 381               		.loc 1 122 0
- 382 0158 1092 0000 		sts cnt,__zero_reg__
- 123:main.c        ****     switch(blinkMode){
- 383               		.loc 1 123 0
- 384 015c 8091 0000 		lds r24,blinkMode
- 385 0160 8823      		tst r24
- 386 0162 01F4      		brne .+2
- 387 0164 00C0      		rjmp .L27
- 388 0166 8230      		cpi r24,lo8(2)
- 389 0168 01F0      		breq .+2
- 390 016a 00C0      		rjmp .L20
- 124:main.c        ****         case SCROLL:
- 125:main.c        ****             if(pstate&(1<<DIR_FLAG)){
- 391               		.loc 1 125 0
- 392 016c 8091 0000 		lds r24,pstate
- 126:main.c        ****                 level[order[index]]=brightness++;
- 393               		.loc 1 126 0
- 394 0170 E091 0000 		lds r30,index
- 395 0174 F0E0      		ldi r31,0
- 396 0176 E050      		subi r30,lo8(-(order))
- 397 0178 F040      		sbci r31,hi8(-(order))
- 398 017a E081      		ld r30,Z
- 399 017c F0E0      		ldi r31,0
- 125:main.c        ****                 level[order[index]]=brightness++;
- 400               		.loc 1 125 0
- 401 017e 82FF      		sbrs r24,2
- 402 0180 00C0      		rjmp .L29
- 403               		.loc 1 126 0
- 404 0182 8091 0000 		lds r24,brightness
- 405 0186 91E0      		ldi r25,lo8(1)
- 406 0188 980F      		add r25,r24
- 407 018a 9093 0000 		sts brightness,r25
- 408 018e E050      		subi r30,lo8(-(level))
- 409 0190 F040      		sbci r31,hi8(-(level))
- 410 0192 8083      		st Z,r24
- 127:main.c        ****                 if(brightness>7){
- 411               		.loc 1 127 0
- 412 0194 8091 0000 		lds r24,brightness
- 413 0198 8830      		cpi r24,lo8(8)
- 414 019a 00F4      		brsh .+2
- 415 019c 00C0      		rjmp .L20
- 128:main.c        ****                     brightness=0;
- 416               		.loc 1 128 0
- 417 019e 1092 0000 		sts brightness,__zero_reg__
- 129:main.c        ****                     index++;
- 418               		.loc 1 129 0
- 419 01a2 8091 0000 		lds r24,index
- 420 01a6 8F5F      		subi r24,lo8(-(1))
- 421 01a8 8093 0000 		sts index,r24
- 130:main.c        ****                     if(index>11){
- 422               		.loc 1 130 0
- 423 01ac 8091 0000 		lds r24,index
- 424 01b0 8C30      		cpi r24,lo8(12)
- 425 01b2 00F4      		brsh .+2
- 426 01b4 00C0      		rjmp .L20
- 131:main.c        ****                         index=11;
- 427               		.loc 1 131 0
- 428 01b6 8BE0      		ldi r24,lo8(11)
- 429 01b8 8093 0000 		sts index,r24
- 132:main.c        ****                         brightness=7;
- 430               		.loc 1 132 0
- 431 01bc 87E0      		ldi r24,lo8(7)
- 432 01be 8093 0000 		sts brightness,r24
- 133:main.c        ****                         pstate&=~(1<<DIR_FLAG);
- 433               		.loc 1 133 0
- 434 01c2 8091 0000 		lds r24,pstate
- 435 01c6 8B7F      		andi r24,lo8(-5)
- 436 01c8 00C0      		rjmp .L31
- 437               	.L29:
- 134:main.c        ****                     }
- 135:main.c        ****                 }
- 136:main.c        ****             }else{
- 137:main.c        ****                 level[order[index]]=brightness--;
- 438               		.loc 1 137 0
- 439 01ca 8091 0000 		lds r24,brightness
- 440 01ce 9FEF      		ldi r25,lo8(-1)
- 441 01d0 980F      		add r25,r24
- 442 01d2 9093 0000 		sts brightness,r25
- 443 01d6 E050      		subi r30,lo8(-(level))
- 444 01d8 F040      		sbci r31,hi8(-(level))
- 445 01da 8083      		st Z,r24
- 138:main.c        ****                 if(brightness==0){
- 446               		.loc 1 138 0
- 447 01dc 8091 0000 		lds r24,brightness
- 448 01e0 8111      		cpse r24,__zero_reg__
- 449 01e2 00C0      		rjmp .L20
- 139:main.c        ****                     brightness=7;
- 450               		.loc 1 139 0
- 451 01e4 87E0      		ldi r24,lo8(7)
- 452 01e6 8093 0000 		sts brightness,r24
- 140:main.c        ****                     index--;
- 453               		.loc 1 140 0
- 454 01ea 8091 0000 		lds r24,index
- 455 01ee 8150      		subi r24,lo8(-(-1))
- 456 01f0 8093 0000 		sts index,r24
- 141:main.c        ****                     if(index==0){
- 457               		.loc 1 141 0
- 458 01f4 8091 0000 		lds r24,index
- 459 01f8 8111      		cpse r24,__zero_reg__
- 460 01fa 00C0      		rjmp .L20
- 142:main.c        ****                         index=0;
- 461               		.loc 1 142 0
- 462 01fc 1092 0000 		sts index,__zero_reg__
- 143:main.c        ****                         brightness=0;
- 463               		.loc 1 143 0
- 464 0200 1092 0000 		sts brightness,__zero_reg__
- 144:main.c        ****                         pstate|=(1<<DIR_FLAG);
- 465               		.loc 1 144 0
- 466 0204 8091 0000 		lds r24,pstate
- 467 0208 8460      		ori r24,lo8(4)
- 468               	.L31:
- 469 020a 8093 0000 		sts pstate,r24
- 470 020e 00C0      		rjmp .L20
- 471               	.L27:
- 145:main.c        ****                     }
- 146:main.c        ****                 }
- 147:main.c        ****             }
- 148:main.c        ****             
+  65:main.c        **** 
+  66:main.c        ****         /*if(pstate&(1<<DEBUG_FLAG)){
+  67:main.c        ****             //pstate&=~(1<<DEBUG_FLAG);  
+  68:main.c        ****         }  */
+  69:main.c        **** /*
+  70:main.c        ****         if(pstate&(1<<ADC_FLAG)){
+  71:main.c        ****             pstate&=~(1<<ADC_FLAG);   
+  72:main.c        ****             ADCSRA |= (1<<ADSC);
+  73:main.c        ****         }*/
+  74:main.c        **** 
+  75:main.c        ****     }
+  76:main.c        ****     return 0;
+  77:main.c        **** }     
+  78:main.c        **** /*
+  79:main.c        **** ISR(ADC_vect){
+  80:main.c        ****     uint16_t res=ADCL;
+  81:main.c        ****     res|=(ADCH<<8);
+  82:main.c        ****     blinkMode=2753/res-3;   //Vcc=1024*1.1/ADC
+  83:main.c        **** }*/
+  84:main.c        **** /*
+  85:main.c        **** ISR(TIM0_COMPA_vect) {
+  86:main.c        ****     
+  87:main.c        **** }*/
+  88:main.c        **** 
+  89:main.c        **** 
+  90:main.c        **** ISR(TIM1_COMPA_vect) {
+  52               		.loc 1 90 0
+  53               		.cfi_startproc
+  54 0000 1F92      		push r1
+  55               	.LCFI0:
+  56               		.cfi_def_cfa_offset 3
+  57               		.cfi_offset 1, -2
+  58 0002 0F92      		push r0
+  59               	.LCFI1:
+  60               		.cfi_def_cfa_offset 4
+  61               		.cfi_offset 0, -3
+  62 0004 0FB6      		in r0,__SREG__
+  63 0006 0F92      		push r0
+  64 0008 1124      		clr __zero_reg__
+  65 000a 2F93      		push r18
+  66               	.LCFI2:
+  67               		.cfi_def_cfa_offset 5
+  68               		.cfi_offset 18, -4
+  69 000c 3F93      		push r19
+  70               	.LCFI3:
+  71               		.cfi_def_cfa_offset 6
+  72               		.cfi_offset 19, -5
+  73 000e 4F93      		push r20
+  74               	.LCFI4:
+  75               		.cfi_def_cfa_offset 7
+  76               		.cfi_offset 20, -6
+  77 0010 5F93      		push r21
+  78               	.LCFI5:
+  79               		.cfi_def_cfa_offset 8
+  80               		.cfi_offset 21, -7
+  81 0012 6F93      		push r22
+  82               	.LCFI6:
+  83               		.cfi_def_cfa_offset 9
+  84               		.cfi_offset 22, -8
+  85 0014 7F93      		push r23
+  86               	.LCFI7:
+  87               		.cfi_def_cfa_offset 10
+  88               		.cfi_offset 23, -9
+  89 0016 8F93      		push r24
+  90               	.LCFI8:
+  91               		.cfi_def_cfa_offset 11
+  92               		.cfi_offset 24, -10
+  93 0018 9F93      		push r25
+  94               	.LCFI9:
+  95               		.cfi_def_cfa_offset 12
+  96               		.cfi_offset 25, -11
+  97 001a EF93      		push r30
+  98               	.LCFI10:
+  99               		.cfi_def_cfa_offset 13
+ 100               		.cfi_offset 30, -12
+ 101 001c FF93      		push r31
+ 102               	.LCFI11:
+ 103               		.cfi_def_cfa_offset 14
+ 104               		.cfi_offset 31, -13
+ 105               	/* prologue: Signal */
+ 106               	/* frame size = 0 */
+ 107               	/* stack size = 13 */
+ 108               	.L__stack_usage = 13
+  91:main.c        ****   static uint8_t first, ramp, column, bits, colbit;
+  92:main.c        ****   ramp = (ramp+1) & 0x07;
+ 109               		.loc 1 92 0
+ 110 001e 9091 0000 		lds r25,ramp.1635
+ 111 0022 9F5F      		subi r25,lo8(-(1))
+ 112 0024 9770      		andi r25,lo8(7)
+ 113 0026 9093 0000 		sts ramp.1635,r25
+  93:main.c        ****   if (ramp == 0) {
+ 114               		.loc 1 93 0
+ 115 002a 9111      		cpse r25,__zero_reg__
+ 116 002c 00C0      		rjmp .L5
+  94:main.c        ****     bits = 0x07;
+ 117               		.loc 1 94 0
+ 118 002e 87E0      		ldi r24,lo8(7)
+ 119 0030 8093 0000 		sts bits.1637,r24
+  95:main.c        ****     column = (column + 1) & 0x03;
+ 120               		.loc 1 95 0
+ 121 0034 2091 0000 		lds r18,column.1636
+ 122 0038 2F5F      		subi r18,lo8(-(1))
+ 123 003a 2370      		andi r18,lo8(3)
+ 124 003c 2093 0000 		sts column.1636,r18
+  96:main.c        ****     first = column * 3;
+ 125               		.loc 1 96 0
+ 126 0040 822F      		mov r24,r18
+ 127 0042 63E0      		ldi r22,lo8(3)
+ 128 0044 00D0      		rcall __mulqi3
+ 129 0046 8093 0000 		sts first.1634,r24
+  97:main.c        ****     colbit = 1<<column;
+ 130               		.loc 1 97 0
+ 131 004a 41E0      		ldi r20,lo8(1)
+ 132 004c 50E0      		ldi r21,0
+ 133 004e BA01      		movw r22,r20
+ 134 0050 00C0      		rjmp 2f
+ 135               		1:
+ 136 0052 660F      		lsl r22
+ 137 0054 771F      		rol r23
+ 138               		2:
+ 139 0056 2A95      		dec r18
+ 140 0058 02F4      		brpl 1b
+ 141 005a 6093 0000 		sts colbit.1638,r22
+ 142               	.L5:
+  98:main.c        ****   }
+  99:main.c        ****   if (level[first] == ramp) bits = bits & 0x06;
+ 143               		.loc 1 99 0
+ 144 005e 2091 0000 		lds r18,first.1634
+ 145 0062 30E0      		ldi r19,0
+ 146 0064 F901      		movw r30,r18
+ 147 0066 E050      		subi r30,lo8(-(level))
+ 148 0068 F040      		sbci r31,hi8(-(level))
+ 149 006a 8081      		ld r24,Z
+ 150 006c 9813      		cpse r25,r24
+ 151 006e 00C0      		rjmp .L6
+ 152               		.loc 1 99 0 is_stmt 0 discriminator 1
+ 153 0070 8091 0000 		lds r24,bits.1637
+ 154 0074 8670      		andi r24,lo8(6)
+ 155 0076 8093 0000 		sts bits.1637,r24
+ 156               	.L6:
+ 100:main.c        ****   if (level[first+1] == ramp) bits = bits & 0x05;
+ 157               		.loc 1 100 0 is_stmt 1
+ 158 007a F901      		movw r30,r18
+ 159 007c E050      		subi r30,lo8(-(level+1))
+ 160 007e F040      		sbci r31,hi8(-(level+1))
+ 161 0080 8081      		ld r24,Z
+ 162 0082 9813      		cpse r25,r24
+ 163 0084 00C0      		rjmp .L7
+ 164               		.loc 1 100 0 is_stmt 0 discriminator 1
+ 165 0086 8091 0000 		lds r24,bits.1637
+ 166 008a 8570      		andi r24,lo8(5)
+ 167 008c 8093 0000 		sts bits.1637,r24
+ 168               	.L7:
+ 101:main.c        ****   if (level[first+2] == ramp) bits = bits & 0x03;
+ 169               		.loc 1 101 0 is_stmt 1
+ 170 0090 F901      		movw r30,r18
+ 171 0092 E050      		subi r30,lo8(-(level+2))
+ 172 0094 F040      		sbci r31,hi8(-(level+2))
+ 173 0096 8081      		ld r24,Z
+ 174 0098 9813      		cpse r25,r24
+ 175 009a 00C0      		rjmp .L8
+ 176               		.loc 1 101 0 is_stmt 0 discriminator 1
+ 177 009c 8091 0000 		lds r24,bits.1637
+ 178 00a0 8370      		andi r24,lo8(3)
+ 179 00a2 8093 0000 		sts bits.1637,r24
+ 180               	.L8:
+ 102:main.c        ****   uint8_t mask = colbit - 1;
+ 181               		.loc 1 102 0 is_stmt 1
+ 182 00a6 4091 0000 		lds r20,colbit.1638
+ 183 00aa 6FEF      		ldi r22,lo8(-1)
+ 184 00ac 640F      		add r22,r20
+ 185               	.LVL0:
+ 103:main.c        ****   uint8_t outputs = (bits & mask) | (bits & ~mask)<<1;
+ 186               		.loc 1 103 0
+ 187 00ae 5091 0000 		lds r21,bits.1637
+ 188 00b2 862F      		mov r24,r22
+ 189 00b4 90E0      		ldi r25,0
+ 190 00b6 8095      		com r24
+ 191 00b8 9095      		com r25
+ 192 00ba 252F      		mov r18,r21
+ 193 00bc 30E0      		ldi r19,0
+ 194 00be 8223      		and r24,r18
+ 195 00c0 9323      		and r25,r19
+ 196 00c2 880F      		lsl r24
+ 197 00c4 991F      		rol r25
+ 198 00c6 5623      		and r21,r22
+ 199 00c8 852B      		or r24,r21
+ 200               	.LVL1:
+ 104:main.c        ****   DDRB = (DDRB & 0xF0) | outputs | colbit;
+ 201               		.loc 1 104 0
+ 202 00ca 97B3      		in r25,0x17
+ 203 00cc 907F      		andi r25,lo8(-16)
+ 204 00ce 492B      		or r20,r25
+ 205 00d0 482B      		or r20,r24
+ 206 00d2 47BB      		out 0x17,r20
+ 105:main.c        ****   PORTB = (PORTB & 0xF0) | outputs;
+ 207               		.loc 1 105 0
+ 208 00d4 98B3      		in r25,0x18
+ 209 00d6 907F      		andi r25,lo8(-16)
+ 210 00d8 892B      		or r24,r25
+ 211               	.LVL2:
+ 212 00da 88BB      		out 0x18,r24
+ 106:main.c        ****     
+ 107:main.c        ****     cnt++;
+ 213               		.loc 1 107 0
+ 214 00dc 8091 0000 		lds r24,cnt
+ 215 00e0 8F5F      		subi r24,lo8(-(1))
+ 216 00e2 8093 0000 		sts cnt,r24
+ 108:main.c        ****     if(cnt==speed){
+ 217               		.loc 1 108 0
+ 218 00e6 9091 0000 		lds r25,cnt
+ 219 00ea 8091 0000 		lds r24,speed
+ 220 00ee 9813      		cpse r25,r24
+ 221 00f0 00C0      		rjmp .L10
+ 109:main.c        ****         cnt=0;
+ 222               		.loc 1 109 0
+ 223 00f2 1092 0000 		sts cnt,__zero_reg__
+ 110:main.c        ****     switch(blinkMode){
+ 224               		.loc 1 110 0
+ 225 00f6 8091 0000 		lds r24,blinkMode
+ 226 00fa 8823      		tst r24
+ 227 00fc 01F4      		brne .+2
+ 228 00fe 00C0      		rjmp .L11
+ 229 0100 8230      		cpi r24,lo8(2)
+ 230 0102 01F0      		breq .+2
+ 231 0104 00C0      		rjmp .L10
+ 111:main.c        ****         case SCROLL:
+ 112:main.c        ****             if(pstate&(1<<DIR_FLAG)){
+ 232               		.loc 1 112 0
+ 233 0106 8091 0000 		lds r24,pstate
+ 113:main.c        ****                 level[order[index]]=brightness++;
+ 234               		.loc 1 113 0
+ 235 010a E091 0000 		lds r30,index
+ 236 010e F0E0      		ldi r31,0
+ 237 0110 E050      		subi r30,lo8(-(order))
+ 238 0112 F040      		sbci r31,hi8(-(order))
+ 239 0114 E081      		ld r30,Z
+ 240 0116 F0E0      		ldi r31,0
+ 112:main.c        ****                 level[order[index]]=brightness++;
+ 241               		.loc 1 112 0
+ 242 0118 82FF      		sbrs r24,2
+ 243 011a 00C0      		rjmp .L13
+ 244               		.loc 1 113 0
+ 245 011c 8091 0000 		lds r24,brightness
+ 246 0120 91E0      		ldi r25,lo8(1)
+ 247 0122 980F      		add r25,r24
+ 248 0124 9093 0000 		sts brightness,r25
+ 249 0128 E050      		subi r30,lo8(-(level))
+ 250 012a F040      		sbci r31,hi8(-(level))
+ 251 012c 8083      		st Z,r24
+ 114:main.c        ****                 if(brightness>7){
+ 252               		.loc 1 114 0
+ 253 012e 8091 0000 		lds r24,brightness
+ 254 0132 8830      		cpi r24,lo8(8)
+ 255 0134 00F4      		brsh .+2
+ 256 0136 00C0      		rjmp .L10
+ 115:main.c        ****                     brightness=0;
+ 257               		.loc 1 115 0
+ 258 0138 1092 0000 		sts brightness,__zero_reg__
+ 116:main.c        ****                     index++;
+ 259               		.loc 1 116 0
+ 260 013c 8091 0000 		lds r24,index
+ 261 0140 8F5F      		subi r24,lo8(-(1))
+ 262 0142 8093 0000 		sts index,r24
+ 117:main.c        ****                     if(index>11){
+ 263               		.loc 1 117 0
+ 264 0146 8091 0000 		lds r24,index
+ 265 014a 8C30      		cpi r24,lo8(12)
+ 266 014c 00F4      		brsh .+2
+ 267 014e 00C0      		rjmp .L10
+ 118:main.c        ****                         index=11;
+ 268               		.loc 1 118 0
+ 269 0150 8BE0      		ldi r24,lo8(11)
+ 270 0152 8093 0000 		sts index,r24
+ 119:main.c        ****                         brightness=7;
+ 271               		.loc 1 119 0
+ 272 0156 87E0      		ldi r24,lo8(7)
+ 273 0158 8093 0000 		sts brightness,r24
+ 120:main.c        ****                         pstate&=~(1<<DIR_FLAG);
+ 274               		.loc 1 120 0
+ 275 015c 8091 0000 		lds r24,pstate
+ 276 0160 8B7F      		andi r24,lo8(-5)
+ 277 0162 00C0      		rjmp .L27
+ 278               	.L13:
+ 121:main.c        ****                     }
+ 122:main.c        ****                 }
+ 123:main.c        ****             }else{
+ 124:main.c        ****                 level[order[index]]=brightness--;
+ 279               		.loc 1 124 0
+ 280 0164 8091 0000 		lds r24,brightness
+ 281 0168 9FEF      		ldi r25,lo8(-1)
+ 282 016a 980F      		add r25,r24
+ 283 016c 9093 0000 		sts brightness,r25
+ 284 0170 E050      		subi r30,lo8(-(level))
+ 285 0172 F040      		sbci r31,hi8(-(level))
+ 286 0174 8083      		st Z,r24
+ 125:main.c        ****                 if(brightness==0){
+ 287               		.loc 1 125 0
+ 288 0176 8091 0000 		lds r24,brightness
+ 289 017a 8111      		cpse r24,__zero_reg__
+ 290 017c 00C0      		rjmp .L10
+ 126:main.c        ****                     brightness=7;
+ 291               		.loc 1 126 0
+ 292 017e 87E0      		ldi r24,lo8(7)
+ 293 0180 8093 0000 		sts brightness,r24
+ 127:main.c        ****                     index--;
+ 294               		.loc 1 127 0
+ 295 0184 8091 0000 		lds r24,index
+ 296 0188 8150      		subi r24,lo8(-(-1))
+ 297 018a 8093 0000 		sts index,r24
+ 128:main.c        ****                     if(index==0){
+ 298               		.loc 1 128 0
+ 299 018e 8091 0000 		lds r24,index
+ 300 0192 8111      		cpse r24,__zero_reg__
+ 301 0194 00C0      		rjmp .L10
+ 129:main.c        ****                         index=0;
+ 302               		.loc 1 129 0
+ 303 0196 1092 0000 		sts index,__zero_reg__
+ 130:main.c        ****                         brightness=0;
+ 304               		.loc 1 130 0
+ 305 019a 1092 0000 		sts brightness,__zero_reg__
+ 131:main.c        ****                         pstate|=(1<<DIR_FLAG);
+ 306               		.loc 1 131 0
+ 307 019e 8091 0000 		lds r24,pstate
+ 308 01a2 8460      		ori r24,lo8(4)
+ 309               	.L27:
+ 310 01a4 8093 0000 		sts pstate,r24
+ 311 01a8 00C0      		rjmp .L10
+ 312               	.L11:
+ 132:main.c        ****                     }
+ 133:main.c        ****                 }
+ 134:main.c        ****             }
+ 135:main.c        ****             
+ 136:main.c        ****             break;
+ 137:main.c        ****         case ALL:
+ 138:main.c        ****             level[order[index]]=brightness;
+ 313               		.loc 1 138 0
+ 314 01aa E091 0000 		lds r30,index
+ 315 01ae F0E0      		ldi r31,0
+ 316 01b0 E050      		subi r30,lo8(-(order))
+ 317 01b2 F040      		sbci r31,hi8(-(order))
+ 318 01b4 E081      		ld r30,Z
+ 319 01b6 F0E0      		ldi r31,0
+ 320 01b8 8091 0000 		lds r24,brightness
+ 321 01bc E050      		subi r30,lo8(-(level))
+ 322 01be F040      		sbci r31,hi8(-(level))
+ 323 01c0 8083      		st Z,r24
+ 139:main.c        ****             brightness=(brightness+1)&0x07;
+ 324               		.loc 1 139 0
+ 325 01c2 8091 0000 		lds r24,brightness
+ 326 01c6 8F5F      		subi r24,lo8(-(1))
+ 327 01c8 8770      		andi r24,lo8(7)
+ 328 01ca 8093 0000 		sts brightness,r24
+ 140:main.c        ****             if(brightness==0){
+ 329               		.loc 1 140 0
+ 330 01ce 8091 0000 		lds r24,brightness
+ 331 01d2 8111      		cpse r24,__zero_reg__
+ 332 01d4 00C0      		rjmp .L10
+ 141:main.c        ****                 //level[order[index]]=0;
+ 142:main.c        ****                 index++;
+ 333               		.loc 1 142 0
+ 334 01d6 8091 0000 		lds r24,index
+ 335 01da 8F5F      		subi r24,lo8(-(1))
+ 336 01dc 8093 0000 		sts index,r24
+ 143:main.c        ****                 if(index>11)index=0;
+ 337               		.loc 1 143 0
+ 338 01e0 8091 0000 		lds r24,index
+ 339 01e4 8C30      		cpi r24,lo8(12)
+ 340 01e6 00F0      		brlo .L10
+ 341               		.loc 1 143 0 is_stmt 0 discriminator 1
+ 342 01e8 1092 0000 		sts index,__zero_reg__
+ 343               	.L10:
+ 144:main.c        ****             }
+ 145:main.c        ****             break;
+ 146:main.c        ****         case PIXIE:
+ 147:main.c        ****         case DEBUG:
+ 148:main.c        ****         default:
  149:main.c        ****             break;
- 150:main.c        ****         case ALL:
- 151:main.c        ****             level[order[index]]=brightness;
- 472               		.loc 1 151 0
- 473 0210 E091 0000 		lds r30,index
- 474 0214 8091 0000 		lds r24,brightness
- 475 0218 F0E0      		ldi r31,0
- 476 021a E050      		subi r30,lo8(-(order))
- 477 021c F040      		sbci r31,hi8(-(order))
- 478 021e E081      		ld r30,Z
- 479 0220 F0E0      		ldi r31,0
- 480 0222 E050      		subi r30,lo8(-(level))
- 481 0224 F040      		sbci r31,hi8(-(level))
- 482 0226 8083      		st Z,r24
- 152:main.c        ****             brightness=(brightness+1)&0x07;
- 483               		.loc 1 152 0
- 484 0228 8091 0000 		lds r24,brightness
- 485 022c 8F5F      		subi r24,lo8(-(1))
- 486 022e 8770      		andi r24,lo8(7)
- 487 0230 8093 0000 		sts brightness,r24
- 153:main.c        ****             if(brightness==0){
- 488               		.loc 1 153 0
- 489 0234 8091 0000 		lds r24,brightness
- 490 0238 8111      		cpse r24,__zero_reg__
- 491 023a 00C0      		rjmp .L20
- 154:main.c        ****                 //level[order[index]]=0;
- 155:main.c        ****                 index++;
- 492               		.loc 1 155 0
- 493 023c 8091 0000 		lds r24,index
- 494 0240 8F5F      		subi r24,lo8(-(1))
- 495 0242 8093 0000 		sts index,r24
- 156:main.c        ****                 if(index>11)index=0;
- 496               		.loc 1 156 0
- 497 0246 8091 0000 		lds r24,index
- 498 024a 8C30      		cpi r24,lo8(12)
- 499 024c 00F0      		brlo .L20
- 500               		.loc 1 156 0 is_stmt 0 discriminator 1
- 501 024e 1092 0000 		sts index,__zero_reg__
- 502               	.L20:
- 503               	/* epilogue start */
- 157:main.c        ****             }
- 158:main.c        ****             break;
- 159:main.c        ****         case PIXIE:
- 160:main.c        ****         case DEBUG:
- 161:main.c        ****         default:
- 162:main.c        ****             break;
- 163:main.c        ****         }
- 164:main.c        ****     }
- 165:main.c        **** }
- 504               		.loc 1 165 0 is_stmt 1
- 505 0252 FF91      		pop r31
- 506 0254 EF91      		pop r30
- 507 0256 9F91      		pop r25
- 508 0258 8F91      		pop r24
- 509 025a 7F91      		pop r23
- 510 025c 6F91      		pop r22
- 511               	.LVL11:
- 512 025e 5F91      		pop r21
- 513 0260 4F91      		pop r20
- 514 0262 3F91      		pop r19
- 515 0264 2F91      		pop r18
- 516 0266 0F90      		pop r0
- 517 0268 0FBE      		out __SREG__,r0
- 518 026a 0F90      		pop r0
- 519 026c 1F90      		pop r1
- 520 026e 1895      		reti
- 521               		.cfi_endproc
- 522               	.LFE13:
- 524               		.local	colbit.1655
- 525               		.comm	colbit.1655,1,1
- 526               		.local	first.1651
- 527               		.comm	first.1651,1,1
- 528               		.local	column.1653
- 529               		.comm	column.1653,1,1
- 530               		.local	bits.1654
- 531               		.comm	bits.1654,1,1
- 532               		.local	ramp.1652
- 533               		.comm	ramp.1652,1,1
- 534               	.global	index
- 535               		.data
- 538               	index:
- 539 0000 01        		.byte	1
- 540               	.global	speed
- 543               	speed:
- 544 0001 3F        		.byte	63
- 545               	.global	brightness
- 548               	brightness:
- 549 0002 05        		.byte	5
- 550               		.local	randf
- 551               		.comm	randf,1,1
- 552               		.local	randx
- 553               		.comm	randx,4,1
- 554               	.global	pstate
- 555               		.section .bss
- 558               	pstate:
- 559 0000 00        		.zero	1
- 560               	.global	blinkMode
- 563               	blinkMode:
- 564 0001 00        		.zero	1
- 565               	.global	order
- 566               		.section	.rodata
- 569               	order:
- 570 0000 03        		.byte	3
- 571 0001 08        		.byte	8
- 572 0002 02        		.byte	2
- 573 0003 07        		.byte	7
- 574 0004 09        		.byte	9
- 575 0005 04        		.byte	4
- 576 0006 05        		.byte	5
- 577 0007 01        		.byte	1
- 578 0008 00        		.byte	0
- 579 0009 06        		.byte	6
- 580 000a 0B        		.byte	11
- 581 000b 0A        		.byte	10
- 582               		.comm	level,12,1
- 583               	.global	cnt
- 584               		.data
- 587               	cnt:
- 588 0003 01        		.byte	1
- 589               		.text
- 590               	.Letext0:
- 591               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 150:main.c        ****         }
+ 151:main.c        ****     }
+ 152:main.c        ****     
+ 153:main.c        ****     if((PINB&(1<<PINB4)) && (pstate&(1<<TOUCH_FLAG))){
+ 344               		.loc 1 153 0 is_stmt 1
+ 345 01ec B49B      		sbis 0x16,4
+ 346 01ee 00C0      		rjmp .L15
+ 347               		.loc 1 153 0 is_stmt 0 discriminator 1
+ 348 01f0 8091 0000 		lds r24,pstate
+ 349 01f4 80FF      		sbrs r24,0
+ 350 01f6 00C0      		rjmp .L15
+ 154:main.c        ****         pstate&=~(1<<TOUCH_FLAG);   
+ 351               		.loc 1 154 0 is_stmt 1
+ 352 01f8 8091 0000 		lds r24,pstate
+ 353 01fc 8E7F      		andi r24,lo8(-2)
+ 354 01fe 8093 0000 		sts pstate,r24
+ 155:main.c        ****         blinkMode++;
+ 355               		.loc 1 155 0
+ 356 0202 8091 0000 		lds r24,blinkMode
+ 357 0206 8F5F      		subi r24,lo8(-(1))
+ 358 0208 8093 0000 		sts blinkMode,r24
+ 156:main.c        ****         if(blinkMode>=NB_MODES)blinkMode=0;
+ 359               		.loc 1 156 0
+ 360 020c 8091 0000 		lds r24,blinkMode
+ 361 0210 8430      		cpi r24,lo8(4)
+ 362 0212 00F0      		brlo .L16
+ 363               		.loc 1 156 0 is_stmt 0 discriminator 1
+ 364 0214 1092 0000 		sts blinkMode,__zero_reg__
+ 365               	.L16:
+ 157:main.c        ****         brightness=0;
+ 366               		.loc 1 157 0 is_stmt 1
+ 367 0218 1092 0000 		sts brightness,__zero_reg__
+ 158:main.c        ****         pstate|=(1<<DIR_FLAG);
+ 368               		.loc 1 158 0
+ 369 021c 8091 0000 		lds r24,pstate
+ 370 0220 8460      		ori r24,lo8(4)
+ 371 0222 8093 0000 		sts pstate,r24
+ 159:main.c        ****         index=0;
+ 372               		.loc 1 159 0
+ 373 0226 1092 0000 		sts index,__zero_reg__
+ 374               	.LVL3:
+ 375 022a 80E0      		ldi r24,0
+ 376 022c 90E0      		ldi r25,0
+ 377               	.LVL4:
+ 378               	.L17:
+ 379               	.LBB2:
+ 160:main.c        ****         for(uint8_t i=0;i<12;i++){
+ 161:main.c        ****             level[i]=0;
+ 380               		.loc 1 161 0 discriminator 3
+ 381 022e FC01      		movw r30,r24
+ 382 0230 E050      		subi r30,lo8(-(level))
+ 383 0232 F040      		sbci r31,hi8(-(level))
+ 384 0234 1082      		st Z,__zero_reg__
+ 385               	.LVL5:
+ 386 0236 0196      		adiw r24,1
+ 387               	.LVL6:
+ 160:main.c        ****         for(uint8_t i=0;i<12;i++){
+ 388               		.loc 1 160 0 discriminator 3
+ 389 0238 8C30      		cpi r24,12
+ 390 023a 9105      		cpc r25,__zero_reg__
+ 391 023c 01F4      		brne .L17
+ 392 023e 00C0      		rjmp .L4
+ 393               	.LVL7:
+ 394               	.L15:
+ 395               	.LBE2:
+ 162:main.c        ****         }
+ 163:main.c        ****     }else if(!(PINB&(1<<PINB4)) && !(pstate&(1<<TOUCH_FLAG))){
+ 396               		.loc 1 163 0
+ 397 0240 B499      		sbic 0x16,4
+ 398 0242 00C0      		rjmp .L4
+ 399               		.loc 1 163 0 is_stmt 0 discriminator 1
+ 400 0244 8091 0000 		lds r24,pstate
+ 401 0248 80FD      		sbrc r24,0
+ 402 024a 00C0      		rjmp .L4
+ 164:main.c        ****         pstate|=(1<<TOUCH_FLAG);            
+ 403               		.loc 1 164 0 is_stmt 1
+ 404 024c 8091 0000 		lds r24,pstate
+ 405 0250 8160      		ori r24,lo8(1)
+ 406 0252 8093 0000 		sts pstate,r24
+ 407               	.L4:
+ 408               	/* epilogue start */
+ 165:main.c        ****     }
+ 166:main.c        **** }
+ 409               		.loc 1 166 0
+ 410 0256 FF91      		pop r31
+ 411 0258 EF91      		pop r30
+ 412 025a 9F91      		pop r25
+ 413 025c 8F91      		pop r24
+ 414 025e 7F91      		pop r23
+ 415 0260 6F91      		pop r22
+ 416               	.LVL8:
+ 417 0262 5F91      		pop r21
+ 418 0264 4F91      		pop r20
+ 419 0266 3F91      		pop r19
+ 420 0268 2F91      		pop r18
+ 421 026a 0F90      		pop r0
+ 422 026c 0FBE      		out __SREG__,r0
+ 423 026e 0F90      		pop r0
+ 424 0270 1F90      		pop r1
+ 425 0272 1895      		reti
+ 426               		.cfi_endproc
+ 427               	.LFE10:
+ 429               		.local	colbit.1638
+ 430               		.comm	colbit.1638,1,1
+ 431               		.local	first.1634
+ 432               		.comm	first.1634,1,1
+ 433               		.local	column.1636
+ 434               		.comm	column.1636,1,1
+ 435               		.local	bits.1637
+ 436               		.comm	bits.1637,1,1
+ 437               		.local	ramp.1635
+ 438               		.comm	ramp.1635,1,1
+ 439               	.global	index
+ 440               		.data
+ 443               	index:
+ 444 0000 01        		.byte	1
+ 445               	.global	speed
+ 448               	speed:
+ 449 0001 3F        		.byte	63
+ 450               	.global	brightness
+ 453               	brightness:
+ 454 0002 05        		.byte	5
+ 455               	.global	pstate
+ 456               		.section .bss
+ 459               	pstate:
+ 460 0000 00        		.zero	1
+ 461               	.global	blinkMode
+ 464               	blinkMode:
+ 465 0001 00        		.zero	1
+ 466               	.global	order
+ 467               		.section	.rodata
+ 470               	order:
+ 471 0000 03        		.byte	3
+ 472 0001 08        		.byte	8
+ 473 0002 02        		.byte	2
+ 474 0003 07        		.byte	7
+ 475 0004 09        		.byte	9
+ 476 0005 04        		.byte	4
+ 477 0006 05        		.byte	5
+ 478 0007 01        		.byte	1
+ 479 0008 00        		.byte	0
+ 480 0009 06        		.byte	6
+ 481 000a 0B        		.byte	11
+ 482 000b 0A        		.byte	10
+ 483               		.comm	level,12,1
+ 484               	.global	cnt
+ 485               		.data
+ 488               	cnt:
+ 489 0003 01        		.byte	1
+ 490               		.text
+ 491               	.Letext0:
+ 492               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/cciMbfqs.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cciMbfqs.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cciMbfqs.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cciMbfqs.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cciMbfqs.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cciMbfqs.s:12     .text:0000000000000000 srand
-     /tmp/cciMbfqs.s:551    .bss:0000000000000008 randx
-     /tmp/cciMbfqs.s:533    .bss:0000000000000007 randf
-     /tmp/cciMbfqs.s:40     .text:000000000000001c rand
-     /tmp/cciMbfqs.s:86     .text.startup:0000000000000000 main
-     /tmp/cciMbfqs.s:558    .bss:0000000000000000 pstate
-     /tmp/cciMbfqs.s:563    .bss:0000000000000001 blinkMode
-     /tmp/cciMbfqs.s:548    .data:0000000000000002 brightness
-     /tmp/cciMbfqs.s:538    .data:0000000000000000 index
+     /tmp/ccKtD6ip.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccKtD6ip.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccKtD6ip.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccKtD6ip.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccKtD6ip.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccKtD6ip.s:13     .text.startup:0000000000000000 main
+     /tmp/ccKtD6ip.s:50     .text:0000000000000000 __vector_3
+     /tmp/ccKtD6ip.s:436    .bss:0000000000000006 ramp.1635
+     /tmp/ccKtD6ip.s:434    .bss:0000000000000005 bits.1637
+     /tmp/ccKtD6ip.s:432    .bss:0000000000000004 column.1636
+     /tmp/ccKtD6ip.s:430    .bss:0000000000000003 first.1634
+                             .bss:0000000000000002 colbit.1638
                             *COM*:000000000000000c level
-     /tmp/cciMbfqs.s:185    .text:0000000000000060 __vector_10
-     /tmp/cciMbfqs.s:216    .text:0000000000000074 __vector_3
-     /tmp/cciMbfqs.s:531    .bss:0000000000000006 ramp.1652
-     /tmp/cciMbfqs.s:529    .bss:0000000000000005 bits.1654
-     /tmp/cciMbfqs.s:527    .bss:0000000000000004 column.1653
-     /tmp/cciMbfqs.s:525    .bss:0000000000000003 first.1651
-                             .bss:0000000000000002 colbit.1655
-     /tmp/cciMbfqs.s:587    .data:0000000000000003 cnt
-     /tmp/cciMbfqs.s:543    .data:0000000000000001 speed
-     /tmp/cciMbfqs.s:569    .rodata:0000000000000000 order
+     /tmp/ccKtD6ip.s:488    .data:0000000000000003 cnt
+     /tmp/ccKtD6ip.s:448    .data:0000000000000001 speed
+     /tmp/ccKtD6ip.s:464    .bss:0000000000000001 blinkMode
+     /tmp/ccKtD6ip.s:459    .bss:0000000000000000 pstate
+     /tmp/ccKtD6ip.s:443    .data:0000000000000000 index
+     /tmp/ccKtD6ip.s:470    .rodata:0000000000000000 order
+     /tmp/ccKtD6ip.s:453    .data:0000000000000002 brightness
 
 UNDEFINED SYMBOLS
-__mulsi3
 __mulqi3
 __do_copy_data
 __do_clear_bss

@@ -2,8 +2,6 @@ Archive member included to satisfy reference by file (symbol)
 
 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
                               main.o (__mulqi3)
-/usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
-                              main.o (__mulsi3)
 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
                               /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o (exit)
 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
@@ -139,7 +137,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x38c
+.text           0x0000000000000000      0x2f6
  *(.vectors)
  .vectors       0x0000000000000000       0x1e /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
                 0x0000000000000000                __vectors
@@ -211,93 +209,75 @@ END GROUP
                 0x0000000000000054                __vector_2
                 0x0000000000000054                __vector_8
                 0x0000000000000054                __vector_14
- .text          0x0000000000000056      0x270 main.o
-                0x0000000000000056                srand
-                0x0000000000000072                rand
-                0x00000000000000b6                __vector_10
-                0x00000000000000ca                __vector_3
- .text          0x00000000000002c6        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
- .text          0x00000000000002c6        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
- .text          0x00000000000002c6        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
- .text          0x00000000000002c6        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
- .text          0x00000000000002c6        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
-                0x00000000000002c6                . = ALIGN (0x2)
+                0x0000000000000054                __vector_10
+ .text          0x0000000000000056      0x274 main.o
+                0x0000000000000056                __vector_3
+ .text          0x00000000000002ca        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
+ .text          0x00000000000002ca        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
+ .text          0x00000000000002ca        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
+ .text          0x00000000000002ca        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
+                0x00000000000002ca                . = ALIGN (0x2)
  *(.text.*)
- .text.startup  0x00000000000002c6       0x7e main.o
-                0x00000000000002c6                main
+ .text.startup  0x00000000000002ca       0x16 main.o
+                0x00000000000002ca                main
  .text.libgcc.mul
-                0x0000000000000344       0x12 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
-                0x0000000000000344                __mulqi3
+                0x00000000000002e0       0x12 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
+                0x00000000000002e0                __mulqi3
  .text.libgcc.div
-                0x0000000000000356        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
- .text.libgcc   0x0000000000000356        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
+ .text.libgcc   0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
  .text.libgcc.prologue
-                0x0000000000000356        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
  .text.libgcc.builtins
-                0x0000000000000356        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
  .text.libgcc.fmul
-                0x0000000000000356        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
  .text.libgcc.fixed
-                0x0000000000000356        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
  .text.libgcc.mul
-                0x0000000000000356       0x32 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
-                0x0000000000000356                __mulsi3
-                0x000000000000035a                __mulsi3_helper
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
  .text.libgcc.div
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
- .text.libgcc   0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
+ .text.libgcc   0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
  .text.libgcc.prologue
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
  .text.libgcc.builtins
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
  .text.libgcc.fmul
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
  .text.libgcc.fixed
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
  .text.libgcc.mul
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
  .text.libgcc.div
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
- .text.libgcc   0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
  .text.libgcc.prologue
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
  .text.libgcc.builtins
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
  .text.libgcc.fmul
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
  .text.libgcc.fixed
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
  .text.libgcc.mul
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
  .text.libgcc.div
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
- .text.libgcc   0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
  .text.libgcc.prologue
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
  .text.libgcc.builtins
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
  .text.libgcc.fmul
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
- .text.libgcc.mul
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
- .text.libgcc.div
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
- .text.libgcc   0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
- .text.libgcc.prologue
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
- .text.libgcc.builtins
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
- .text.libgcc.fmul
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
- .text.libgcc.fixed
-                0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
-                0x0000000000000388                . = ALIGN (0x2)
+                0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
+                0x00000000000002f2                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000000388        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
-                0x0000000000000388                exit
-                0x0000000000000388                _exit
+ .fini9         0x00000000000002f2        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
+                0x00000000000002f2                exit
+                0x00000000000002f2                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -316,11 +296,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000000388        0x4 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
+ .fini0         0x00000000000002f2        0x4 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
  *(.fini0)
-                0x000000000000038c                _etext = .
+                0x00000000000002f6                _etext = .
 
-.data           0x0000000000800060       0x10 load address 0x000000000000038c
+.data           0x0000000000800060       0x10 load address 0x00000000000002f6
                 0x0000000000800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
@@ -330,7 +310,6 @@ END GROUP
                 0x0000000000800062                brightness
                 0x0000000000800063                cnt
  .data          0x0000000000800064        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
- .data          0x0000000000800064        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
  .data          0x0000000000800064        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
  .data          0x0000000000800064        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
  .data          0x0000000000800064        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
@@ -345,31 +324,30 @@ END GROUP
                 0x0000000000800070                _edata = .
                 0x0000000000800070                PROVIDE (__data_end, .)
 
-.bss            0x0000000000800070       0x18
+.bss            0x0000000000800070       0x13
                 0x0000000000800070                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x0000000000800070        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
- .bss           0x0000000000800070        0xc main.o
+ .bss           0x0000000000800070        0x7 main.o
                 0x0000000000800070                pstate
                 0x0000000000800071                blinkMode
- .bss           0x000000000080007c        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
- .bss           0x000000000080007c        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
- .bss           0x000000000080007c        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
- .bss           0x000000000080007c        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
- .bss           0x000000000080007c        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
+ .bss           0x0000000000800077        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
+ .bss           0x0000000000800077        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_exit.o)
+ .bss           0x0000000000800077        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_copy_data.o)
+ .bss           0x0000000000800077        0x0 /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_clear_bss.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x000000000080007c        0xc main.o
-                0x000000000080007c                level
-                0x0000000000800088                PROVIDE (__bss_end, .)
-                0x000000000000038c                __data_load_start = LOADADDR (.data)
-                0x000000000000039c                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0000000000800077        0xc main.o
+                0x0000000000800077                level
+                0x0000000000800083                PROVIDE (__bss_end, .)
+                0x00000000000002f6                __data_load_start = LOADADDR (.data)
+                0x0000000000000306                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0000000000800088        0x0
+.noinit         0x0000000000800083        0x0
                 [!provide]                        PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                        PROVIDE (__noinit_end, .)
-                0x0000000000800088                _end = .
+                0x0000000000800083                _end = .
                 [!provide]                        PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
@@ -442,34 +420,34 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000      0x6b2
+.debug_info     0x0000000000000000      0x618
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x420 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
- .debug_info    0x0000000000000420      0x292 main.o
+ .debug_info    0x0000000000000420      0x1f8 main.o
 
-.debug_abbrev   0x0000000000000000      0x546
+.debug_abbrev   0x0000000000000000      0x4d0
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x3e8 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
- .debug_abbrev  0x00000000000003e8      0x15e main.o
+ .debug_abbrev  0x00000000000003e8       0xe8 main.o
 
-.debug_line     0x0000000000000000      0x28b
+.debug_line     0x0000000000000000      0x23e
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000       0x1a /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
- .debug_line    0x000000000000001a      0x271 main.o
+ .debug_line    0x000000000000001a      0x224 main.o
 
-.debug_frame    0x0000000000000000       0xb8
+.debug_frame    0x0000000000000000       0x7c
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0xb8 main.o
+ .debug_frame   0x0000000000000000       0x7c main.o
 
-.debug_str      0x0000000000000000      0x302
+.debug_str      0x0000000000000000      0x2e4
  *(.debug_str)
  .debug_str     0x0000000000000000      0x169 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
- .debug_str     0x0000000000000169      0x199 main.o
-                                        0x1d7 (size before relaxing)
+ .debug_str     0x0000000000000169      0x17b main.o
+                                        0x1af (size before relaxing)
 
-.debug_loc      0x0000000000000000      0x153
+.debug_loc      0x0000000000000000      0x10e
  *(.debug_loc)
- .debug_loc     0x0000000000000000      0x153 main.o
+ .debug_loc     0x0000000000000000      0x10e main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -516,13 +494,9 @@ __heap_end                                        /usr/lib/gcc/avr/5.4.0/../../.
 __init                                            /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
 __mulqi3                                          /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulqi3.o)
                                                   main.o
-__mulsi3                                          /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
-                                                  main.o
-__mulsi3_helper                                   /usr/lib/gcc/avr/5.4.0/avr25/libgcc.a(_mulsi3.o)
 __stack                                           /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
 __vector_1                                        /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
-__vector_10                                       main.o
-                                                  /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
+__vector_10                                       /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
 __vector_11                                       /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
 __vector_12                                       /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
 __vector_13                                       /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
@@ -550,6 +524,4 @@ main                                              main.o
                                                   /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr25/crtattiny85.o
 order                                             main.o
 pstate                                            main.o
-rand                                              main.o
 speed                                             main.o
-srand                                             main.o
