@@ -642,26 +642,26 @@
  492               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccKtD6ip.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccKtD6ip.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccKtD6ip.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccKtD6ip.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccKtD6ip.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccKtD6ip.s:13     .text.startup:0000000000000000 main
-     /tmp/ccKtD6ip.s:50     .text:0000000000000000 __vector_3
-     /tmp/ccKtD6ip.s:436    .bss:0000000000000006 ramp.1635
-     /tmp/ccKtD6ip.s:434    .bss:0000000000000005 bits.1637
-     /tmp/ccKtD6ip.s:432    .bss:0000000000000004 column.1636
-     /tmp/ccKtD6ip.s:430    .bss:0000000000000003 first.1634
+     /tmp/ccTbvNco.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccTbvNco.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccTbvNco.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccTbvNco.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccTbvNco.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccTbvNco.s:13     .text.startup:0000000000000000 main
+     /tmp/ccTbvNco.s:50     .text:0000000000000000 __vector_3
+     /tmp/ccTbvNco.s:436    .bss:0000000000000006 ramp.1635
+     /tmp/ccTbvNco.s:434    .bss:0000000000000005 bits.1637
+     /tmp/ccTbvNco.s:432    .bss:0000000000000004 column.1636
+     /tmp/ccTbvNco.s:430    .bss:0000000000000003 first.1634
                              .bss:0000000000000002 colbit.1638
                             *COM*:000000000000000c level
-     /tmp/ccKtD6ip.s:488    .data:0000000000000003 cnt
-     /tmp/ccKtD6ip.s:448    .data:0000000000000001 speed
-     /tmp/ccKtD6ip.s:464    .bss:0000000000000001 blinkMode
-     /tmp/ccKtD6ip.s:459    .bss:0000000000000000 pstate
-     /tmp/ccKtD6ip.s:443    .data:0000000000000000 index
-     /tmp/ccKtD6ip.s:470    .rodata:0000000000000000 order
-     /tmp/ccKtD6ip.s:453    .data:0000000000000002 brightness
+     /tmp/ccTbvNco.s:488    .data:0000000000000003 cnt
+     /tmp/ccTbvNco.s:448    .data:0000000000000001 speed
+     /tmp/ccTbvNco.s:464    .bss:0000000000000001 blinkMode
+     /tmp/ccTbvNco.s:459    .bss:0000000000000000 pstate
+     /tmp/ccTbvNco.s:443    .data:0000000000000000 index
+     /tmp/ccTbvNco.s:470    .rodata:0000000000000000 order
+     /tmp/ccTbvNco.s:453    .data:0000000000000002 brightness
 
 UNDEFINED SYMBOLS
 __mulqi3
