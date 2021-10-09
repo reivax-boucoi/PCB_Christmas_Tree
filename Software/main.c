@@ -58,6 +58,7 @@ int main(void){
     ADMUX=(1<<MUX3)|(1<<MUX2);
     ADCSRA |= (1<<ADEN) | (1<<ADIE);
     */
+    //GIMSK|=(1<<PCIE);
     
     sei();                              //Enable interrupts
     while(1){
