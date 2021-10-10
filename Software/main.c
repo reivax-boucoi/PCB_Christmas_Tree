@@ -149,7 +149,7 @@ ISR(TIM1_COMPA_vect) {
     cnt++;
     if(cnt==63){
         cnt=0;
-    switch(blinkMode){
+    /*switch(blinkMode){
         case SCROLL:
             if(pstate&(1<<DIR_FLAG)){
                 level[order[index]]=brightness++;
@@ -179,7 +179,7 @@ ISR(TIM1_COMPA_vect) {
         case FADE:
         case PIXIE:
         case DEBUG:
-        default:
+        default:*/
             level[index]=0;
             index++;
             if(index>11)index=0;
@@ -193,8 +193,8 @@ ISR(TIM1_COMPA_vect) {
                 index++;
                 if(index>11)index=0;
             }*/
-            break;
-        }
+           // break;
+        //}
     }
   
 

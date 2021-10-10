@@ -774,31 +774,31 @@
  595               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccPn8Bis.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccPn8Bis.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccPn8Bis.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccPn8Bis.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccPn8Bis.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccPn8Bis.s:12     .text:0000000000000000 srand
-     /tmp/ccPn8Bis.s:555    .bss:0000000000000008 randx
-     /tmp/ccPn8Bis.s:537    .bss:0000000000000007 randf
-     /tmp/ccPn8Bis.s:40     .text:000000000000001c rand
-     /tmp/ccPn8Bis.s:86     .text.startup:0000000000000000 main
-     /tmp/ccPn8Bis.s:562    .bss:0000000000000000 pstate
-     /tmp/ccPn8Bis.s:567    .bss:0000000000000001 blinkMode
-     /tmp/ccPn8Bis.s:552    .data:0000000000000002 brightness
-     /tmp/ccPn8Bis.s:542    .data:0000000000000000 index
+     /tmp/cctAdAkS.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cctAdAkS.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cctAdAkS.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cctAdAkS.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cctAdAkS.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cctAdAkS.s:12     .text:0000000000000000 srand
+     /tmp/cctAdAkS.s:555    .bss:0000000000000008 randx
+     /tmp/cctAdAkS.s:537    .bss:0000000000000007 randf
+     /tmp/cctAdAkS.s:40     .text:000000000000001c rand
+     /tmp/cctAdAkS.s:86     .text.startup:0000000000000000 main
+     /tmp/cctAdAkS.s:562    .bss:0000000000000000 pstate
+     /tmp/cctAdAkS.s:567    .bss:0000000000000001 blinkMode
+     /tmp/cctAdAkS.s:552    .data:0000000000000002 brightness
+     /tmp/cctAdAkS.s:542    .data:0000000000000000 index
                             *COM*:000000000000000c level
-     /tmp/ccPn8Bis.s:194    .text:0000000000000060 __vector_10
-     /tmp/ccPn8Bis.s:225    .text:0000000000000074 __vector_3
-     /tmp/ccPn8Bis.s:535    .bss:0000000000000006 ramp.1652
-     /tmp/ccPn8Bis.s:533    .bss:0000000000000005 bits.1654
-     /tmp/ccPn8Bis.s:531    .bss:0000000000000004 column.1653
-     /tmp/ccPn8Bis.s:529    .bss:0000000000000003 first.1651
+     /tmp/cctAdAkS.s:194    .text:0000000000000060 __vector_10
+     /tmp/cctAdAkS.s:225    .text:0000000000000074 __vector_3
+     /tmp/cctAdAkS.s:535    .bss:0000000000000006 ramp.1652
+     /tmp/cctAdAkS.s:533    .bss:0000000000000005 bits.1654
+     /tmp/cctAdAkS.s:531    .bss:0000000000000004 column.1653
+     /tmp/cctAdAkS.s:529    .bss:0000000000000003 first.1651
                              .bss:0000000000000002 colbit.1655
-     /tmp/ccPn8Bis.s:591    .data:0000000000000003 cnt
-     /tmp/ccPn8Bis.s:573    .rodata:0000000000000000 order
-     /tmp/ccPn8Bis.s:547    .data:0000000000000001 duty
+     /tmp/cctAdAkS.s:591    .data:0000000000000003 cnt
+     /tmp/cctAdAkS.s:573    .rodata:0000000000000000 order
+     /tmp/cctAdAkS.s:547    .data:0000000000000001 duty
 
 UNDEFINED SYMBOLS
 __mulsi3
