@@ -179,9 +179,11 @@ ISR(TIM1_COMPA_vect) {
         case FADE:
         case PIXIE:
         case DEBUG:
-            level[order[index++]]=0;
+        default:
+            level[index]=0;
+            index++;
             if(index>11)index=0;
-            level[order[index]]=7;
+            level[index]=7;
             
             /*
             level[order[index]]=brightness;
