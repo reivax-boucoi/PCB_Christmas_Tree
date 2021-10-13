@@ -68,6 +68,9 @@ int main(void){
             if(blinkMode>=NB_MODES)blinkMode=0;
             brightness=0;
             index=0;
+            for(uint8_t i=0;i<12;i++){
+                level[i]=0;
+            }
                        
         }else if(!(PINB&(1<<PINB4)) && !(pstate&(1<<TOUCH_FLAG))){
             pstate|=(1<<TOUCH_FLAG);            
