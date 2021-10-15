@@ -1,4 +1,4 @@
-# PCB_Christmas_Tree
+# PCB Christmas Tree
 This project is a simple PCB based Christmas ornament with blinky LEDs and rechargeable supercaps.
 
 ---
