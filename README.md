@@ -7,7 +7,7 @@ This project is a simple PCB based Christmas ornament with blinky LEDs and recha
     <img src="img/tree_front.jpg" width="400" alt="tree_front" text-align: center/>
 </div> 
 
----
+---   
 
 ### Hardware
 
