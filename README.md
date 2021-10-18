@@ -2,6 +2,9 @@
 This project is a simple PCB based Christmas ornament with blinky LEDs and rechargeable supercaps.
 
 ---
+<div style="float:left;"> 
+    <img src="img/tree_front.jpg" width="400" alt="tree_front" text-align: center/>
+</div> 
 ---
 
 ### Hardware
