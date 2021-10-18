@@ -32,7 +32,7 @@ int main(void){
          uint8_t temp = level[11];
         for (int i=11; i>0; i--) level[i] = level[i-1];
         level[0] = temp;
-         _delay_ms(50);
+         _delay_ms(100);
     }
     return 0;
 }     
