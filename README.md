@@ -1,7 +1,8 @@
 # PCB_Christmas_Tree
 This project is a simple PCB based Christmas ornament with blinky LEDs and rechargeable supercaps.
 
-___
+---
+---
 
 ### Hardware
 
@@ -78,7 +79,8 @@ Precompiled version of the firmware: ```Software\main.hex```
 
 To upload using avrdude, run the following commands : `avrdude -u -c usbtiny -p t85 -B 5 -F -U flash:w:main.hex:a -U lfuse:w:0xE2:m -U hfuse:w:0xDF:m -U efuse:w:0xFF:m`
 
-***
+---
+---
 
 ### Software
 
