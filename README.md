@@ -6,11 +6,14 @@ This project is a simple PCB based Christmas ornament with blinky LEDs and recha
 
 ### Hardware
 
-Project was done in Kicad (yay for open-source !). Project files are here: ```Hardware\Kicad\```, including the custom footprint library ```Hardware\Kicad\christmas_tree.pretty```.
-
 ---
 
+Project was done in Kicad (yay for open-source !). Project files are here: ```Hardware\Kicad\```, including the custom footprint library ```Hardware\Kicad\christmas_tree.pretty```.
+
+
 #### Schematic
+
+---
 
 Schematic : ```Hardware\schematic.pdf```
 
@@ -23,9 +26,10 @@ Components were chosen based on my current stock.
 * **LEDs**: Given the limited amount of GPIOs on the µC, I turned to [Charlieplexing](https://en.wikipedia.org/wiki/Charlieplexing), which allows with some clever tricks to drive 12 LEDs with only 4 pins. One thing though, if you want to use different color LEDs you won't be able to adjust their individual brightness easily, so blue LEDs will be dimmer than red by example.
 * **Touch button**: For extra fanciness I added a TTP223 touch sensor chip, which allows to cycle between different display modes. The default config works fine even if not populated.
 
----
 
 #### Layout
+
+---
 
 To keep this project cheap, the goal was to fit the whole layout on a 10x10cm 2 layer board, which JLCPCB famously offers at 2$ for 5pcs. Decision was made to split the tree in 2 halves that would then be soldered back together, to get a bit extra height. 
 
@@ -41,9 +45,10 @@ For the 1st time I experimented with using the different layers (bare FR4 materi
     <img src="img/3Dview_back.png" width="210" alt="PCB 3D view back" text-align: right/>
 </div> 
 
----
 
 #### Ordering
+
+---
 
 Zipped gerbers are available (```Hardware\Kicad\gerbers.zip```)to be directly dropped on manufacturers websites like JLCPCB. I used their excellent prototype service for my boards, both cheap and quick.
 
@@ -55,9 +60,9 @@ Ordering settings: 2 layers, 1.6mm board thickness, white silkscreen, HASL(with 
 
 In the Remarks field: "Please note: Some parts use Solder Mask Defined Pads. Do not compensate/modify the solder mask for them. No edge plating required. Center cutout to be routed and discarded."
 
----
-
 #### Assembly
+
+---
 
 The PCB comes with the 2 halves attached with mousebites. Once separated the remaining burs can be filed off.
 
@@ -65,9 +70,10 @@ Minimum components to be assembled are: C1&C2 supercaps, SW1 power switch, U3 mi
 
 To avoid making a custom TagConnect to ICSP adapter, the µC can be programmed in a socket before being soldered on the board.
 
----
 
 #### Programming
+
+---
 
 Precompiled version of the firmware: ```Software\main.hex```
 
@@ -77,6 +83,8 @@ To upload using avrdude, run the following commands : `avrdude -u -c usbtiny -p 
 ---
 
 ### Software
+
+---
 
 Software uses Timer1 to cycle between each LED and light it using a 7 bit intensity scale. Several blinking modes can be cycled through with the touch button: fade (default), pixies and debug (one LED at a time)
 
