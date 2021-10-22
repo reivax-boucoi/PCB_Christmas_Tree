@@ -66,12 +66,12 @@ In the Remarks field: "Please note: Some parts use Solder Mask Defined Pads. Do 
 
 <div style="float:left;"> 
     <img src="img/tree_panel.jpg" width="200" alt="tree_panel" text-align: left/>
-    <img src="img/tree_separated.jpg" width="300" alt="tree_separated" text-align: right/>
+    <img src="img/tree_separated.jpg" width="290" alt="tree_separated" text-align: right/>
 </div> 
 The PCB comes with the 2 halves attached with mousebites. Once separated the remaining burs can be filed off.
 <div style="float:left;"> 
     <img src="img/tree_back.jpg" width="200" alt="tree_back" text-align: left/>
-    <img src="img/tree_front.jpg" width="200" alt="tree_front" text-align: center/>
+    <img src="img/tree_front.jpg" width="195" alt="tree_front" text-align: center/>
     <img src="img/tree_assembled.jpg" width="200" alt="tree_assembled" text-align: right/>
 </div> 
 
