@@ -62,7 +62,7 @@ To avoid making a custom TagConnect to ICSP adapter, the µC can be programmed i
 
 Precompiled version of the firmware: ```Software\main.hex```
 
-To upload using avrdude, run the following command : `avrdude TODO`
+To upload using avrdude, run the following commands : `avrdude -u -c usbtiny -p t85 -B 5 -F -U flash:w:main.hex:a -U lfuse:w:0xE2:m -U hfuse:w:0xDF:m -U efuse:w:0xFF:m`
 
 ---
 
@@ -70,4 +70,5 @@ To upload using avrdude, run the following command : `avrdude TODO`
 
 Software uses Timer1 to cycle between each LED and light it using a 7 bit intensity scale. Several blinking modes can be cycled through with the touch button: fade (default), pixies and debug (one LED at a time)
 
+```Program: 432 bytes (5.3% Full) & Data: 19 bytes (3.7% Full)```
 
