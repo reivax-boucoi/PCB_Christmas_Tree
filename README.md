@@ -67,3 +67,7 @@ To upload using avrdude, run the following command : `avrdude TODO`
 ---
 
 ### Software
+
+Software uses Timer1 to cycle between each LED and light it using a 7 bit intensity scale. Several blinking modes can be cycled through with the touch button: fade (default), pixies and debug (one LED at a time)
+
+
