@@ -54,7 +54,7 @@ In the Remarks field: "Please note: Some parts use Solder Mask Defined Pads. Do 
 
 The PCB comes with the 2 halves attached with mousebites. Once separated the remaining burs can be filed off.
 
-Minimum components to be assembled are: C1&C2 supercaps, SW1 power switch, U3 microcontroller, R1 & R10 charging resistors, the 4 220 resistors and the LEDs.
+Minimum components to be assembled are: C1&C2 supercaps, SW1 power switch, U3 microcontroller, R1 & R10 charging resistors, the 4 220Ω resistors and the LEDs.
 
 To avoid making a custom TagConnect to ICSP adapter, the µC can be programmed in a socket before being soldered on the board.
 
