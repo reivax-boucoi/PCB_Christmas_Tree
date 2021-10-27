@@ -2,11 +2,13 @@
 This project is a simple PCB based Christmas ornament with blinky LEDs and rechargeable supercaps.
 
 ---
+---
 
 ### Hardware
 
 Project was done in Kicad (yay for open-source !). Project files are here: ```Hardware\Kicad\```, including the custom footprint library ```Hardware\Kicad\christmas_tree.pretty```.
 
+---
 
 #### Schematic
 
@@ -20,6 +22,8 @@ Components were chosen based on my current stock.
 * **Brain of the operations**: I used the ever popular Attiny 25/45/85 series, a small 8-bit AVR micro which offers more than enough capabilities & programming space than I need. Programming port is a TagConnect footprint modified to remove the through holes.
 * **LEDs**: Given the limited amount of GPIOs on the µC, I turned to [Charlieplexing](https://en.wikipedia.org/wiki/Charlieplexing), which allows with some clever tricks to drive 12 LEDs with only 4 pins. One thing though, if you want to use different color LEDs you won't be able to adjust their individual brightness easily, so blue LEDs will be dimmer than red by example.
 * **Touch button**: For extra fanciness I added a TTP223 touch sensor chip, which allows to cycle between different display modes. The default config works fine even if not populated.
+
+---
 
 #### Layout
 
@@ -37,6 +41,7 @@ For the 1st time I experimented with using the different layers (bare FR4 materi
     <img src="img/3Dview_back.png" width="210" alt="PCB 3D view back" text-align: right/>
 </div> 
 
+---
 
 #### Ordering
 
@@ -50,6 +55,8 @@ Ordering settings: 2 layers, 1.6mm board thickness, white silkscreen, HASL(with 
 
 In the Remarks field: "Please note: Some parts use Solder Mask Defined Pads. Do not compensate/modify the solder mask for them. No edge plating required. Center cutout to be routed and discarded."
 
+---
+
 #### Assembly
 
 The PCB comes with the 2 halves attached with mousebites. Once separated the remaining burs can be filed off.
@@ -58,12 +65,15 @@ Minimum components to be assembled are: C1&C2 supercaps, SW1 power switch, U3 mi
 
 To avoid making a custom TagConnect to ICSP adapter, the µC can be programmed in a socket before being soldered on the board.
 
+---
+
 #### Programming
 
 Precompiled version of the firmware: ```Software\main.hex```
 
 To upload using avrdude, run the following commands : `avrdude -u -c usbtiny -p t85 -B 5 -F -U flash:w:main.hex:a -U lfuse:w:0xE2:m -U hfuse:w:0xDF:m -U efuse:w:0xFF:m`
 
+---
 ---
 
 ### Software
