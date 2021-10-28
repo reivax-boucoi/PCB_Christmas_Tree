@@ -55,6 +55,8 @@ The PCB comes with the 2 halves attached with mousebites
 
 #### Programming
 
+Precompiled version of the firmware: ```Software\main.hex```
+To upload unsing avrdude, run the following command : `avrdude TODO`
 
 ---
 
