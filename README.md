@@ -5,7 +5,7 @@ This project is a simple PCB based Christmas ornament with blinky LEDs and recha
 
 ### Hardware
 
-Project was done in Kicad (yay for open-source !). Project files are here: ```Hardware\Kicad\```
+Project was done in Kicad (yay for open-source !). Project files are here: ```Hardware\Kicad\```, including the custom footprint library ```Hardware\Kicad\christmas_tree.pretty```.
 
 
 #### Schematic
@@ -35,6 +35,7 @@ For the 1st time I experimented with using the different layers (bare FR4 materi
     <img src="img/3Dview_front.png" width="200" alt="PCB 3D view front" text-align: left/>
     <img src="img/3Dview_back.png" width="210" alt="PCB 3D view back" text-align: right/>
 </div> 
+
 
 #### Ordering
 
