@@ -11,6 +11,7 @@ Project was done in Kicad (yay for open-source !). Project files are here: ```Ha
 #### Schematic
 
 Schematic : ```Hardware\schematic.pdf```
+
 Bill of Materials : ```Hardware\BOM.csv```
 
 Components were chosen based on my current stock. 
@@ -21,7 +22,7 @@ Components were chosen based on my current stock.
 
 #### Layout
 
-To keep this project cheap, the goal is to fit the whole layout on a 10x10cm 2 layer board, which JLCPCB famously offers at 2$ for 5pcs. Decision was made to split the tree in 2 halves that would then be soldered back together, to get a bit of extra height. 
+To keep this project cheap, the goal was to fit the whole layout on a 10x10cm 2 layer board, which JLCPCB famously offers at 2$ for 5pcs. Decision was made to split the tree in 2 halves that would then be soldered back together, to get a bit extra height. 
 
 For the 1st time I experimented with using the different layers (bare FR4 material, bare copper, copper+soldermask, bare soldermask and silkscreen) to make a somewhat artistic result. For more info on the colors you can get when playing with PCBs I would recommend visiting [this page](https://github.com/Hanqaqa/PCB_Color_Palette).
 
@@ -48,6 +49,8 @@ Ordering settings: 2 layers, 1.6mm board thickness, white silkscreen, HASL(with 
 In the Remarks field: "Please note: Some parts use Solder Mask Defined Pads. Do not compensate/modify the solder mask for them. No edge plating required. Center cutout to be routed and discarded."
 
 #### Assembly
+
+The PCB comes with the 2 halves attached with mousebites
 
 #### Programming
 
