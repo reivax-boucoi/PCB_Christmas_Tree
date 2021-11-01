@@ -7,9 +7,11 @@ This project is a simple PCB based Christmas ornament with blinky LEDs and recha
 
 Project was done in Kicad (yay for open-source !). Project files are here: ``` Hardware\Kicad\```
 
+
 #### Schematic
 
-``` Hardware\schematic.pdf```
+Schematic : ``` Hardware\schematic.pdf```
+Bill of Materials : ``` Hardware\BOM.csv```
 
 Components were chosen based on my current stock. 
 * **Power storage**: Instead of traditional batteries, 2 Maxwell 10F 2.7V supercapacitors were used as rechargeable storage, just because I have a bunch of them and don't like non-rechargeable gadgets. Granted, I estimated the tree can only run about 1 hour max per charge (approx. 6mA average current draw), which is not great considering a single CR2032 could probably last several weeks. But, supercaps are fun and you can recharge them with any USB port in <1min.
@@ -35,7 +37,7 @@ For the 1st time I experimented with using the different layers (bare FR4 materi
 
 #### Ordering
 
-Zipped gerbers are available to be directly dropped on manufacturers websites like JLCPCB. I used their excellent prototype service for my boards, both cheap and quick.
+Zipped gerbers are available (``` Hardware\Gerbers.zip```)to be directly dropped on manufacturers websites like JLCPCB. I used their excellent prototype service for my boards, both cheap and quick.
 
 Feel free to use these files as is or modify and improve the project. Don't forget to share our version as well!
 
