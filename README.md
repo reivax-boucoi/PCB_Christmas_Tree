@@ -4,10 +4,15 @@ This project is a simple PCB based Christmas ornament with blinky LEDs and recha
 ---
 
 ### Hardware
+
+Project was done in Kicad (yay for open-source !). Project files are here: ``` Hardware\Kicad\```
+
 #### Schematic
 
+``` Hardware\schematic.pdf```
+
 Components were chosen based on my current stock. 
-* **Power storage**: Instead of traditional batteries, 2 supercapacitors were used as rechargeable storage, jst because I have a bunch of them and dislike non-rechargeable things. Granted, I estimated the tree can only run about 1 hour max per charge (approx. 6mA average current draw), which is not great considering a single CR2032 could probably last several weeks. But, supercaps are fun and you can recharge them with any USB port in <1min.
+* **Power storage**: Instead of traditional batteries, 2 Maxwell 10F 2.7V supercapacitors were used as rechargeable storage, just because I have a bunch of them and don't like non-rechargeable gadgets. Granted, I estimated the tree can only run about 1 hour max per charge (approx. 6mA average current draw), which is not great considering a single CR2032 could probably last several weeks. But, supercaps are fun and you can recharge them with any USB port in <1min.
 * **Charging**: An integrated USB connector allows direct charging of the supercaps, through a current limiting resistor. Do not make it less than ~15Ω to not exceed USB spec current capabilities. I added an optional charge balancing circuitry with TL431 shunt Vref, but didn't used it in the end as my caps were quite similar in capacity.
 * **Brain of the operations**: I used the ever popular Attiny 25/45/85 series, a small 8-bit AVR micro which offers more than enough capabilities & programming space than I need. Programming port is a TagConnect footprint modified to remove the through holes.
 * **LEDs**: Given the limited amount of GPIOs on the µC, I turned to [Charlieplexing](https://en.wikipedia.org/wiki/Charlieplexing), which allows with some clever tricks to drive 12 LEDs with only 4 pins. One thing though, if you want to use different color LEDs you won't be able to adjust their individual brightness easily, so blue LEDs will be dimmer than red by example.
@@ -25,10 +30,11 @@ For the 1st time I experimented with using the different layers (bare FR4 materi
 
 <div style="float:left;"> 
     <img src="img/3Dview_front.png" width="200" alt="PCB 3D view front" text-align: left/>
-    <img src="img/3Dview_back.png" width="215" alt="PCB 3D view back" text-align: right/>
+    <img src="img/3Dview_back.png" width="210" alt="PCB 3D view back" text-align: right/>
 </div> 
 
 #### Ordering
+
 Zipped gerbers are available to be directly dropped on manufacturers websites like JLCPCB. I used their excellent prototype service for my boards, both cheap and quick.
 
 Feel free to use these files as is or modify and improve the project. Don't forget to share our version as well!
@@ -38,6 +44,11 @@ Final dimensions are 88.7mm*98mm.
 Ordering settings: 2 layers, 1.6mm board thickness, white silkscreen, HASL(with lead) surface finish, 1oz copper weight, Specify a location for Remove Order Number,
 
 In the Remarks field: "Please note: Some parts use Solder Mask Defined Pads. Do not compensate/modify the solder mask for them. No edge plating required. Center cutout to be routed and discarded."
+
+#### Assembly
+
+#### Programming
+
 
 ---
 
