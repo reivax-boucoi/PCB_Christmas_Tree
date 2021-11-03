@@ -25,7 +25,7 @@ For the 1st time I experimented with using the different layers (bare FR4 materi
 
 <div style="float:left;"> 
     <img src="img/3Dview_front.png" width="200" alt="PCB 3D view front" text-align: left/>
-    <img src="img/3Dview_back.png" width="205" alt="PCB 3D view back" text-align: right/>
+    <img src="img/3Dview_back.png" width="215" alt="PCB 3D view back" text-align: right/>
 </div> 
 
 #### Ordering
