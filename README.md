@@ -11,6 +11,7 @@ Components were chosen based on my current stock.
 * **Charging**: An integrated USB connector allows direct charging of the supercaps, through a current limiting resistor. Do not make it less than ~15Ω to not exceed USB spec current capabilities. I added an optional charge balancing circuitry with TL431 shunt Vref, but didn't used it in the end as my caps were quite similar in capacity.
 * **Brain of the operations**: I used the ever popular Attiny 25/45/85 series, a small 8-bit AVR micro which offers more than enough capabilities & programming space than I need. Programming port is a TagConnect footprint modified to remove the through holes.
 * **LEDs**: Given the limited amount of GPIOs on the µC, I turned to [Charlieplexing](https://en.wikipedia.org/wiki/Charlieplexing), which allows with some clever tricks to drive 12 LEDs with only 4 pins. One thing though, if you want to use different color LEDs you won't be able to adjust their individual brightness easily, so blue LEDs will be dimmer than red by example.
+
 #### Layout
 
 To keep this project cheap, the goal is to fit the whole layout on a 10x10cm 2 layer board, which JLCPCB famously offers at 2$ for 5pcs. Decision was made to split the tree in 2 halves that would then be soldered back together, to get a bit of extra height. 
@@ -21,10 +22,12 @@ For the 1st time I experimented with using the different layers (bare FR4 materi
 - Leds are reverse mounted so they shine through the board: solder mask keepout areas are placed on both sides to let the light through.
 - Base of the tree doubles as a USB A port to easily recharge the batteries
 - Supercapacitors provide mechanical support to stand the tree upright
+
 <div style="float:left;"> 
     <img src="img/3Dview_front.png" width="200" alt="PCB 3D view front" text-align: left/>
-    <img src="img/3Dview_back.png" width="200" alt="PCB 3D view back" text-align: right/>
+    <img src="img/3Dview_back.png" width="205" alt="PCB 3D view back" text-align: right/>
 </div> 
+
 #### Ordering
 Zipped gerbers are available to be directly dropped on manufacturers websites like JLCPCB. I used their excellent prototype service for my boards, both cheap and quick.
 
