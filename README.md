@@ -6,8 +6,10 @@ This project is a simple PCB based Christmas ornament with blinky LEDs and recha
 ### Hardware
 #### Schematic
 
-Components were chosen based on my current stock. Instead of traditional batteries, 2 supercapacitors were used as rechargeable storage, jst because I have a bunch of them and dislike non-rechargeable things. Granted, I estimated the tree can only run about 1 hour max per charge, which is not great considering a single CR2032 could probably last several weeks. But, supercaps are fun and you can recherge it with any USB port in <1min.
-
+Components were chosen based on my current stock. 
+* Power: Instead of traditional batteries, 2 supercapacitors were used as rechargeable storage, jst because I have a bunch of them and dislike non-rechargeable things. Granted, I estimated the tree can only run about 1 hour max per charge, which is not great considering a single CR2032 could probably last several weeks. But, supercaps are fun and you can recharge it with any USB port in <1min.
+* Brain of the operations: I used the classic Attiny 25/45/85 series, a small 8-bit AVR micro which offers more than enough capabilities & programming space than I need.
+* LEDs: Given the limited amount of GPIOs on the µC, I turned to Charlieplexing, which allows with some clever tricks to drive 12 LEDs with only 4 pins. One thing though, if you want to use different color LEDs you won't be able to adjust their individual brightness easily, so blue LEDs will be dimmer than red by example.
 #### Layout
 
 To keep this project cheap, the goal is to fit the whole layout on a 10x10cm 2 layer board, which JLCPCB famously offers at 2$ for 5pcs. Decision was made to split the tree in 2 halves that would then be soldered back together, to get a bit of extra height. 
