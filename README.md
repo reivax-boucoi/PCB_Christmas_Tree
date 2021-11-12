@@ -16,9 +16,12 @@ For the 1st time I experimented with using the different layers (bare FR4 materi
 - Supercapacitors provide mechanical support to stand the tree upright
 
 #### Ordering
-Zipped gerbers are available to be directly dropped on manufacturers websites like JLCPCB. I used their excellent prototype service
+Zipped gerbers are available to be directly dropped on manufacturers websites like JLCPCB. I used their excellent prototype service for my boards, both cheap and quick.
+
 Final dimensions are 88.7mm*98mm.
+
 Ordering settings: 2 layers, 1.6mm board thickness, white silkscreen, HASL(with lead) surface finish, 1oz copper weigth, "Specify a location" for Remove Order Number,
+
 In the Remarks field: Please note: Some parts use Solder Mask Defined Pads. Do not compensate/modify the solder mask for them. No edge plating required. Center cutout to be routed and discarded.
 
 ---
