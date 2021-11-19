@@ -19,6 +19,7 @@ Components were chosen based on my current stock.
 * **Charging**: An integrated USB connector allows direct charging of the supercaps, through a current limiting resistor. Do not make it less than ~15Ω to not exceed USB spec current capabilities. I added an optional charge balancing circuitry with TL431 shunt Vref, but didn't used it in the end as my caps were quite similar in capacity.
 * **Brain of the operations**: I used the ever popular Attiny 25/45/85 series, a small 8-bit AVR micro which offers more than enough capabilities & programming space than I need. Programming port is a TagConnect footprint modified to remove the through holes.
 * **LEDs**: Given the limited amount of GPIOs on the µC, I turned to [Charlieplexing](https://en.wikipedia.org/wiki/Charlieplexing), which allows with some clever tricks to drive 12 LEDs with only 4 pins. One thing though, if you want to use different color LEDs you won't be able to adjust their individual brightness easily, so blue LEDs will be dimmer than red by example.
+* **Touch button**: For extra fanciness I added a TTP223 touch sensor chip, which allows to cycle between different display modes. The default config works fine even if not populated.
 
 #### Layout
 
@@ -51,12 +52,17 @@ In the Remarks field: "Please note: Some parts use Solder Mask Defined Pads. Do 
 
 #### Assembly
 
-The PCB comes with the 2 halves attached with mousebites
+The PCB comes with the 2 halves attached with mousebites. Once separated the remaining burs can be filed off.
+
+Minimum components to be assembled are: C1&C2 supercaps, SW1 power switch, U3 microcontroller, R1 & R10 charging resistors, the 4 220 resistors and the LEDs.
+
+To avoid making a custom TagConnect to ICSP adapter, the µC can be programmed in a socket before being soldered on the board.
 
 #### Programming
 
 Precompiled version of the firmware: ```Software\main.hex```
-To upload unsing avrdude, run the following command : `avrdude TODO`
+
+To upload using avrdude, run the following command : `avrdude TODO`
 
 ---
 
