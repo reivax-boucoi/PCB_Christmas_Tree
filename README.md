@@ -21,8 +21,10 @@ For the 1st time I experimented with using the different layers (bare FR4 materi
 - Leds are reverse mounted so they shine through the board: solder mask keepout areas are placed on both sides to let the light through.
 - Base of the tree doubles as a USB A port to easily recharge the batteries
 - Supercapacitors provide mechanical support to stand the tree upright
-<img src="img/3Dview_front.png" width="200" alt="PCB 3D view front" text-align: left/>
-<img src="img/3Dview_back.png" width="200" alt="PCB 3D view back" text-align: right/>
+<div style="float:left;"> 
+    <img src="img/3Dview_front.png" width="200" alt="PCB 3D view front" text-align: left/>
+    <img src="img/3Dview_back.png" width="200" alt="PCB 3D view back" text-align: right/>
+</div> 
 #### Ordering
 Zipped gerbers are available to be directly dropped on manufacturers websites like JLCPCB. I used their excellent prototype service for my boards, both cheap and quick.
 
