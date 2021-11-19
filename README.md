@@ -12,5 +12,8 @@ To keep this project cheap, the goal is to fit the whole layout on a 10x10cm 2 l
 - 
 #### Ordering
 Zipped gerbers are available to be directly dropped on manufacturers websites like JLCPCB. I used their excellent prototype service
+Final dimensions are 88.7mm*98mm.
+Ordering settings: 2 layers, 1.6mm board thickness, white silkscreen, HASL(with lead) surface finish, 1oz copper weigth, "Specify a location" for Remove Order Number,
+In the Remarks field: Please note: Some parts use Solder Mask Defined Pads. Do not compensate/modify the solder mask for them. No edge plating required. Center cutout to be routed and discarded.
 ---
 ### Software
