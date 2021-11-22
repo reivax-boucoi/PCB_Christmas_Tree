@@ -35,6 +35,9 @@ int rand(void){
 	return((int)((randx = randx*1103515245L + 12345)>>16) & 077777);
 }
 
+volatile uint8_t brightness=5;
+volatile uint8_t duty=3;
+volatile uint8_t index=1;
 
 
 int main(void){
@@ -57,9 +60,6 @@ int main(void){
     */
     
     sei();                              //Enable interrupts
-    uint8_t t=0;
-    uint8_t w=5;
-    uint8_t h=t+w;
     while(1){
         
         if((PINB&(1<<PINB4)) && (pstate&(1<<TOUCH_FLAG))){
@@ -90,9 +90,6 @@ ISR(ADC_vect){
     res|=(ADCH<<8);
     blinkMode=2753/res-3;   //Vcc=1024*1.1/ADC
 }*/
-volatile uint8_t brightness=5;
-volatile uint8_t duty=3;
-volatile uint8_t index=1;
 
 ISR(TIM0_COMPA_vect) {
     /*if(pstate&(1<<DIR_FLAG)){
