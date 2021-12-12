@@ -3,7 +3,7 @@
 #include<avr/interrupt.h>
 #include <avr/power.h>
 
-#define FADE 0
+#define ALL 0
 #define PIXIE 1
 #define SCROLL 2
 #define DEBUG 3
@@ -14,7 +14,7 @@
 #define DEBUG_FLAG 2
 #define DIR_FLAG 2
 
-volatile unsigned int cnt=1;
+volatile uint8_t cnt=1;
 uint8_t level[12];
 //uint8_t level[12] = {1, 1, 3, 7, 15, 31, 63, 31, 15, 7, 3, 1 }; //Brightness levels of each led.
 //uint8_t order[12] = {0,11,9,4,2,10,7,6,3,1,8,5};//Reverse
@@ -36,7 +36,7 @@ int rand(void){
 }
 
 volatile uint8_t brightness=5;
-volatile uint8_t duty=3;
+volatile uint8_t speed=63;
 volatile uint8_t index=1;
 
 
@@ -48,12 +48,12 @@ int main(void){
     OCR1A=0;                          //No PWM
     OCR1C=250-1;                      //16kHz for good POV (16k/64/12=20Hz)
     TIMSK|=(1<<OCIE1A);                 //Compare Match A interrupt
-    
+    /*
     TCCR0A=(1<<WGM01);
     OCR0A=255;
     TCCR0B=(1<<CS02)|(1<<CS00);
     TIMSK|=(1<<OCIE0A);
-    
+    */
     /*
     ADMUX=(1<<MUX3)|(1<<MUX2);
     ADCSRA |= (1<<ADEN) | (1<<ADIE);
@@ -95,36 +95,6 @@ ISR(ADC_vect){
 }*/
 
 ISR(TIM0_COMPA_vect) {
-    /*if(pstate&(1<<DIR_FLAG)){
-        cnt++;
-    }else{
-        cnt--;
-    }
-    switch(blinkMode){
-        case(PIXIE):
-            if(cnt==duty){
-                level[index]=15;
-            }else if(cnt>=speed){
-                cnt=0;
-                level[index]=0; 
-                index=rand()/2730;
-            }
-        break;
-        case(DEBUG):
-            if(cnt>15){
-                pstate&=~(1<<DIR_FLAG);
-                level[order[index]]=0; 
-                index--;
-                if(index==255)index=11;
-            }else if(cnt==0){
-                pstate|=(1<<DIR_FLAG);
-            }
-            level[order[index]]=cnt; 
-            
-            break;
-    }*/
- 
-
     
 }
 
@@ -147,9 +117,9 @@ ISR(TIM1_COMPA_vect) {
   PORTB = (PORTB & 0xF0) | outputs;
     
     cnt++;
-    if(cnt==63){
+    if(cnt==speed){
         cnt=0;
-    /*switch(blinkMode){
+    switch(blinkMode){
         case SCROLL:
             if(pstate&(1<<DIR_FLAG)){
                 level[order[index]]=brightness++;
@@ -176,21 +146,18 @@ ISR(TIM1_COMPA_vect) {
             }
             
             break;
-        case FADE:
-        case PIXIE:
-        case DEBUG:
-        default:*/
-           
+        case ALL:
             level[order[index]]=brightness;
             brightness=(brightness+1)&0x07;
             if(brightness==0){
-                level[order[index]]=0;
+                //level[order[index]]=0;
                 index++;
                 if(index>11)index=0;
             }
-           // break;
-        //}
+            break;
+        case PIXIE:
+        case DEBUG:
+        default:
+        }
     }
-  
-
 }

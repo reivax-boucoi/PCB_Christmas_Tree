@@ -590,21 +590,31 @@
  412 018c 8091 0000 		lds r24,brightness
  413 0190 8111      		cpse r24,__zero_reg__
  414 0192 00C0      		rjmp .L20
- 187:main.c        ****                 //level[order[index]]=0;
+ 187:main.c        ****                 level[order[index]]=0;
+ 415               		.loc 1 187 0
+ 416 0194 E091 0000 		lds r30,index
+ 417 0198 F0E0      		ldi r31,0
+ 418 019a E050      		subi r30,lo8(-(order))
+ 419 019c F040      		sbci r31,hi8(-(order))
+ 420 019e E081      		ld r30,Z
+ 421 01a0 F0E0      		ldi r31,0
+ 422 01a2 E050      		subi r30,lo8(-(level))
+ 423 01a4 F040      		sbci r31,hi8(-(level))
+ 424 01a6 1082      		st Z,__zero_reg__
  188:main.c        ****                 index++;
- 415               		.loc 1 188 0
- 416 0194 8091 0000 		lds r24,index
- 417 0198 8F5F      		subi r24,lo8(-(1))
- 418 019a 8093 0000 		sts index,r24
+ 425               		.loc 1 188 0
+ 426 01a8 8091 0000 		lds r24,index
+ 427 01ac 8F5F      		subi r24,lo8(-(1))
+ 428 01ae 8093 0000 		sts index,r24
  189:main.c        ****                 if(index>11)index=0;
- 419               		.loc 1 189 0
- 420 019e 8091 0000 		lds r24,index
- 421 01a2 8C30      		cpi r24,lo8(12)
- 422 01a4 00F0      		brlo .L20
- 423               		.loc 1 189 0 is_stmt 0 discriminator 1
- 424 01a6 1092 0000 		sts index,__zero_reg__
- 425               	.L20:
- 426               	/* epilogue start */
+ 429               		.loc 1 189 0
+ 430 01b2 8091 0000 		lds r24,index
+ 431 01b6 8C30      		cpi r24,lo8(12)
+ 432 01b8 00F0      		brlo .L20
+ 433               		.loc 1 189 0 is_stmt 0 discriminator 1
+ 434 01ba 1092 0000 		sts index,__zero_reg__
+ 435               	.L20:
+ 436               	/* epilogue start */
  190:main.c        ****             }
  191:main.c        ****            // break;
  192:main.c        ****         //}
@@ -612,106 +622,106 @@
  194:main.c        ****   
  195:main.c        **** 
  196:main.c        **** }
- 427               		.loc 1 196 0 is_stmt 1
- 428 01aa FF91      		pop r31
- 429 01ac EF91      		pop r30
- 430 01ae 9F91      		pop r25
- 431 01b0 8F91      		pop r24
- 432 01b2 7F91      		pop r23
- 433 01b4 6F91      		pop r22
- 434               	.LVL11:
- 435 01b6 5F91      		pop r21
- 436 01b8 4F91      		pop r20
- 437 01ba 3F91      		pop r19
- 438 01bc 2F91      		pop r18
- 439 01be 0F90      		pop r0
- 440 01c0 0FBE      		out __SREG__,r0
- 441 01c2 0F90      		pop r0
- 442 01c4 1F90      		pop r1
- 443 01c6 1895      		reti
- 444               		.cfi_endproc
- 445               	.LFE13:
- 447               		.local	colbit.1655
- 448               		.comm	colbit.1655,1,1
- 449               		.local	first.1651
- 450               		.comm	first.1651,1,1
- 451               		.local	column.1653
- 452               		.comm	column.1653,1,1
- 453               		.local	bits.1654
- 454               		.comm	bits.1654,1,1
- 455               		.local	ramp.1652
- 456               		.comm	ramp.1652,1,1
- 457               	.global	index
- 458               		.data
- 461               	index:
- 462 0000 01        		.byte	1
- 463               	.global	duty
- 466               	duty:
- 467 0001 03        		.byte	3
- 468               	.global	brightness
- 471               	brightness:
- 472 0002 05        		.byte	5
- 473               		.local	randf
- 474               		.comm	randf,1,1
- 475               		.local	randx
- 476               		.comm	randx,4,1
- 477               	.global	pstate
- 478               		.section .bss
- 481               	pstate:
- 482 0000 00        		.zero	1
- 483               	.global	blinkMode
- 486               	blinkMode:
- 487 0001 00        		.zero	1
- 488               	.global	order
- 489               		.section	.rodata
- 492               	order:
- 493 0000 03        		.byte	3
- 494 0001 08        		.byte	8
- 495 0002 02        		.byte	2
- 496 0003 07        		.byte	7
- 497 0004 09        		.byte	9
- 498 0005 04        		.byte	4
- 499 0006 05        		.byte	5
- 500 0007 01        		.byte	1
- 501 0008 00        		.byte	0
- 502 0009 06        		.byte	6
- 503 000a 0B        		.byte	11
- 504 000b 0A        		.byte	10
- 505               		.comm	level,12,1
- 506               	.global	cnt
- 507               		.data
- 510               	cnt:
- 511 0003 0100      		.word	1
- 512               		.text
- 513               	.Letext0:
- 514               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 437               		.loc 1 196 0 is_stmt 1
+ 438 01be FF91      		pop r31
+ 439 01c0 EF91      		pop r30
+ 440 01c2 9F91      		pop r25
+ 441 01c4 8F91      		pop r24
+ 442 01c6 7F91      		pop r23
+ 443 01c8 6F91      		pop r22
+ 444               	.LVL11:
+ 445 01ca 5F91      		pop r21
+ 446 01cc 4F91      		pop r20
+ 447 01ce 3F91      		pop r19
+ 448 01d0 2F91      		pop r18
+ 449 01d2 0F90      		pop r0
+ 450 01d4 0FBE      		out __SREG__,r0
+ 451 01d6 0F90      		pop r0
+ 452 01d8 1F90      		pop r1
+ 453 01da 1895      		reti
+ 454               		.cfi_endproc
+ 455               	.LFE13:
+ 457               		.local	colbit.1655
+ 458               		.comm	colbit.1655,1,1
+ 459               		.local	first.1651
+ 460               		.comm	first.1651,1,1
+ 461               		.local	column.1653
+ 462               		.comm	column.1653,1,1
+ 463               		.local	bits.1654
+ 464               		.comm	bits.1654,1,1
+ 465               		.local	ramp.1652
+ 466               		.comm	ramp.1652,1,1
+ 467               	.global	index
+ 468               		.data
+ 471               	index:
+ 472 0000 01        		.byte	1
+ 473               	.global	duty
+ 476               	duty:
+ 477 0001 03        		.byte	3
+ 478               	.global	brightness
+ 481               	brightness:
+ 482 0002 05        		.byte	5
+ 483               		.local	randf
+ 484               		.comm	randf,1,1
+ 485               		.local	randx
+ 486               		.comm	randx,4,1
+ 487               	.global	pstate
+ 488               		.section .bss
+ 491               	pstate:
+ 492 0000 00        		.zero	1
+ 493               	.global	blinkMode
+ 496               	blinkMode:
+ 497 0001 00        		.zero	1
+ 498               	.global	order
+ 499               		.section	.rodata
+ 502               	order:
+ 503 0000 03        		.byte	3
+ 504 0001 08        		.byte	8
+ 505 0002 02        		.byte	2
+ 506 0003 07        		.byte	7
+ 507 0004 09        		.byte	9
+ 508 0005 04        		.byte	4
+ 509 0006 05        		.byte	5
+ 510 0007 01        		.byte	1
+ 511 0008 00        		.byte	0
+ 512 0009 06        		.byte	6
+ 513 000a 0B        		.byte	11
+ 514 000b 0A        		.byte	10
+ 515               		.comm	level,12,1
+ 516               	.global	cnt
+ 517               		.data
+ 520               	cnt:
+ 521 0003 0100      		.word	1
+ 522               		.text
+ 523               	.Letext0:
+ 524               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccUpoMQa.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccUpoMQa.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccUpoMQa.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccUpoMQa.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccUpoMQa.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccUpoMQa.s:12     .text:0000000000000000 srand
-     /tmp/ccUpoMQa.s:474    .bss:0000000000000008 randx
-     /tmp/ccUpoMQa.s:456    .bss:0000000000000007 randf
-     /tmp/ccUpoMQa.s:40     .text:000000000000001c rand
-     /tmp/ccUpoMQa.s:86     .text.startup:0000000000000000 main
-     /tmp/ccUpoMQa.s:481    .bss:0000000000000000 pstate
-     /tmp/ccUpoMQa.s:486    .bss:0000000000000001 blinkMode
-     /tmp/ccUpoMQa.s:471    .data:0000000000000002 brightness
-     /tmp/ccUpoMQa.s:461    .data:0000000000000000 index
+     /tmp/ccQvCgJt.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccQvCgJt.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccQvCgJt.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccQvCgJt.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccQvCgJt.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccQvCgJt.s:12     .text:0000000000000000 srand
+     /tmp/ccQvCgJt.s:484    .bss:0000000000000008 randx
+     /tmp/ccQvCgJt.s:466    .bss:0000000000000007 randf
+     /tmp/ccQvCgJt.s:40     .text:000000000000001c rand
+     /tmp/ccQvCgJt.s:86     .text.startup:0000000000000000 main
+     /tmp/ccQvCgJt.s:491    .bss:0000000000000000 pstate
+     /tmp/ccQvCgJt.s:496    .bss:0000000000000001 blinkMode
+     /tmp/ccQvCgJt.s:481    .data:0000000000000002 brightness
+     /tmp/ccQvCgJt.s:471    .data:0000000000000000 index
                             *COM*:000000000000000c level
-     /tmp/ccUpoMQa.s:194    .text:0000000000000060 __vector_10
-     /tmp/ccUpoMQa.s:225    .text:0000000000000074 __vector_3
-     /tmp/ccUpoMQa.s:454    .bss:0000000000000006 ramp.1652
-     /tmp/ccUpoMQa.s:452    .bss:0000000000000005 bits.1654
-     /tmp/ccUpoMQa.s:450    .bss:0000000000000004 column.1653
-     /tmp/ccUpoMQa.s:448    .bss:0000000000000003 first.1651
+     /tmp/ccQvCgJt.s:194    .text:0000000000000060 __vector_10
+     /tmp/ccQvCgJt.s:225    .text:0000000000000074 __vector_3
+     /tmp/ccQvCgJt.s:464    .bss:0000000000000006 ramp.1652
+     /tmp/ccQvCgJt.s:462    .bss:0000000000000005 bits.1654
+     /tmp/ccQvCgJt.s:460    .bss:0000000000000004 column.1653
+     /tmp/ccQvCgJt.s:458    .bss:0000000000000003 first.1651
                              .bss:0000000000000002 colbit.1655
-     /tmp/ccUpoMQa.s:510    .data:0000000000000003 cnt
-     /tmp/ccUpoMQa.s:492    .rodata:0000000000000000 order
-     /tmp/ccUpoMQa.s:466    .data:0000000000000001 duty
+     /tmp/ccQvCgJt.s:520    .data:0000000000000003 cnt
+     /tmp/ccQvCgJt.s:502    .rodata:0000000000000000 order
+     /tmp/ccQvCgJt.s:476    .data:0000000000000001 duty
 
 UNDEFINED SYMBOLS
 __mulsi3
