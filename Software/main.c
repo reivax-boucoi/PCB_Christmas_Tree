@@ -15,13 +15,13 @@
 #define DIR_FLAG 2
 
 volatile uint8_t cnt=1;
-uint8_t level[12];
+volatile uint8_t level[12];
 //uint8_t level[12] = {1, 1, 3, 7, 15, 31, 63, 31, 15, 7, 3, 1 }; //Brightness levels of each led.
 //uint8_t order[12] = {0,11,9,4,2,10,7,6,3,1,8,5};//Reverse
 const uint8_t order[12] = {3,8,2,7,9,4,5,1,0,6,11,10};//Right
 volatile uint8_t blinkMode = ALL;
 volatile uint8_t pstate=0;
-
+/*
 static	long	randx;
 static	char	randf;
 
@@ -34,7 +34,7 @@ int rand(void){
 	if(!randf)srand(1);
 	return((int)((randx = randx*1103515245L + 12345)>>16) & 077777);
 }
-
+*/
 volatile uint8_t brightness=5;
 volatile uint8_t speed=63;
 volatile uint8_t index=1;
@@ -76,9 +76,9 @@ int main(void){
         }else if(!(PINB&(1<<PINB4)) && !(pstate&(1<<TOUCH_FLAG))){
             pstate|=(1<<TOUCH_FLAG);            
         }
-        if(pstate&(1<<DEBUG_FLAG)){
+        /*if(pstate&(1<<DEBUG_FLAG)){
             //pstate&=~(1<<DEBUG_FLAG);  
-        }  
+        }  */
 /*
         if(pstate&(1<<ADC_FLAG)){
             pstate&=~(1<<ADC_FLAG);   
@@ -94,10 +94,10 @@ ISR(ADC_vect){
     res|=(ADCH<<8);
     blinkMode=2753/res-3;   //Vcc=1024*1.1/ADC
 }*/
-
+/*
 ISR(TIM0_COMPA_vect) {
     
-}
+}*/
 
 
 ISR(TIM1_COMPA_vect) {
