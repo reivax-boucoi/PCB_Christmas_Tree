@@ -162,15 +162,19 @@ ISR(TIM1_COMPA_vect) {
             }
             break;
         case PIXIE:
-            brightness++;
-            if(brightness>10){
-                brightness=0;
-                level[index]=7;
-            }else if(brightness==0{
-                level[index]=0;
-                index++;
-                if(index>11)index=0;
+            switch(++brightness){
+                case 1:
+                    level[index]=7;
+                break;
+                case 2:
+                    level[index]=0;
+                break;
+                case 10:
+                    brightness=0;
+                    index++;
+                    if(index>11)index=0;
             }
+
         case DEBUG:
         default:
             break;
